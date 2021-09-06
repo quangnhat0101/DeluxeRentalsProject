@@ -84,6 +84,16 @@
     </div>
   </header><!-- End Header -->
 
+<!-- Intro image section -->
+<section id="shortintro">
+    <div class="shortintro-container">
+    <h2>Deluxe Rentals</h2>
+    <h1>Your experience is our inspiration</h1>
+
+    </div>
+  </section>
+  <!-- End Intro image section -->
+
   @yield('my content')
     
 
@@ -177,4 +187,5 @@
 
 </body>
 
+@yield('script-section')
 </html>

@@ -22,7 +22,6 @@ class CreateManagementStaffsTable extends Migration
             $table->string('StaffAdd',255);
             $table->string('StaffMail',50);          
             $table->string('StaffPic',255);
-            $table->string('Role',5);
             $table->boolean('CurrentStaff');
             $table->timestamps();
         });
