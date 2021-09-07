@@ -9,5 +9,5 @@ Instruction to run project:
 6. Run php artisan key:generate <br>
 7. Run php artisan migrate <br>
 8. Run php artisan db:seed <br>
-
+<br>
 Finally open "http://localhost:8080/[Your Folder Name]/public/homepage" and enjoy!
