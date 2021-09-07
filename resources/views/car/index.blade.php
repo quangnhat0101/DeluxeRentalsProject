@@ -24,7 +24,7 @@
                 <tr>
                     <td>{{ $list -> CarID }}</td>
                     <td>{{ $list -> CarBrand }}</td>
-                    <td>{{ $list -> CarType }}</td>
+                    <td>{{ $list -> CarModel }}</td>
                     <td>{{ $list -> CarPlate }}</td>
                     <td>{{ $list -> CarPrice }}</td>
                     <td>

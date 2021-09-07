@@ -3,8 +3,8 @@
 @section('my content')
 
 <div class="container" style="margin-top: 100px; margin-bottom: 100px">
-        @if(session('status'))
-            <h6>{{session('status')}}</h6>
+        @if(session('success'))
+            <h6>{{session('success')}}</h6>
         @endif
         <h1>NEW CAR INFORMATION</h1>
         <a href="{{ url('carindex') }}">Return to index</a>
@@ -17,8 +17,8 @@
                 <input type="text" class="form-control" name="txtBrand" placeholder="Enter car brand">
             </div>
             <div class="form-group">
-                <label>Car Type</label>
-                <input type="text" class="form-control" name="txtType" placeholder="Enter car type">
+                <label>Car Model</label>
+                <input type="text" class="form-control" name="txtModel" placeholder="Enter car type">
             </div>
             <div class="form-group">
                 <label>Car Plate</label>

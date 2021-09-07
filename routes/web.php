@@ -35,9 +35,17 @@ Route::get('cardelete/{id}','CarController@DeleteCar');
     //Route for homepage
     Route::get('homepage','SiteController@Homepage');
     Route::get('contact','SiteController@Contact');
+    Route::get('about','SiteController@About');
+    Route::get('manage','SiteController@Manage');
+    Route::get('service','SiteController@Service');
 
     //Route for booking
     Route::get('booking','OrderController@BookCar');
+
+    Route::get('add-to-cart/{id}','OrderController@addToCart');
+    Route::get('cart', 'OrderController@cart');
+    Route::patch('update-cart', 'OrderController@update');
+    Route::delete('remove-from-cart', 'OrderController@remove');
 
 
 //----------------Staff CRUD---------------------------
@@ -54,15 +62,15 @@ Route::get('staffdelete/{StaffID}', 'StaffController@delete');
 
 //----------------Driver CRUD---------------------------
 //01.READ - http://localhost:8080/demo/public/driver/viewdriver
-Route::get('driver/viewdriver', 'DriverController@index');
+Route::get('driverindex', 'DriverController@index');
 //02.CREAT - http://localhost:8080/demo/public/driver/adddriver
-Route::get('driver/adddriver', 'DriverController@create');
-Route::post('driver/adddriverprocess', 'DriverController@createProcess');
+Route::get('drivercreate', 'DriverController@create');
+Route::post('drivercreate', 'DriverController@createProcess');
 //03. UPDATE - http://localhost:8080/demo/public/driver/updatedriver
-Route::get('driver/updatedriver/{DriverID}', 'DriverController@update');
-Route::post('driver/updatedriverprocess/{DriverID}', 'DriverController@updateProcess');
+Route::get('driverupdate/{DriverID}', 'DriverController@update');
+Route::post('driverupdate/{DriverID}', 'DriverController@updateProcess');
 //04. DELETE
-Route::get('driver/deletedriver/{DriverID}', 'DriverController@delete');
+Route::get('driverdelete/{DriverID}', 'DriverController@delete');
 
 
-Route::get('customer/index','CustomerController@index');
+Route::get('customerindex','CustomerController@index');

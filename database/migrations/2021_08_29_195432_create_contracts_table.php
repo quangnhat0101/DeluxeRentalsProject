@@ -18,7 +18,7 @@ class CreateContractsTable extends Migration
             $table->date('ContractDate');
             $table->unsignedBigInteger('CusID');
             $table->foreign('CusID')->references('CusID')->on('customers');
-            $table->unsignedBigInteger('StaffID');
+            $table->unsignedBigInteger('StaffID')->nullable();
             $table->foreign('StaffID')->references('StaffID')->on('management_staffs');
             $table->boolean('ContractStatus');
             $table->timestamps();

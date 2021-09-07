@@ -1,25 +1,24 @@
-@extends('Layout.layout2')
-@section('title','EditCar')
-
+@extends('layout.layout2')
+@section('title','Update Car Information')
 @section('my content')
 
-<div class="container" style="margin-top: 100px; margin-bottom: 100px">
-        @if(session('status'))
-            <h6>{{session('status')}}</h6>
+  <div class="container" style="margin-top: 100px; margin-bottom: 100px">
+        @if(session('success'))
+            <h6>{{session('success')}}</h6>
         @endif
-        <h1>Edit car</h1>
-        <a href="{{ url('car/index') }}">Return to index</a>
+        <h1>Update Car Information</h1>
+        <a href="{{ url('carindex') }}">Return to index</a>
         <br>
         <br>
-        <form method="post" action="{{ url('car/updatecar/'.$carlist->CarID) }}" enctype="multipart/form-data">
+        <form method="post" action="{{ url('carupdate/'.$carlist->CarID) }}" enctype="multipart/form-data">
         @csrf
             <div class="form-group">
                 <label>Car Brand</label>
                 <input type="text" class="form-control" name="txtBrand" value="{{ $carlist->CarBrand }}">
             </div>
             <div class="form-group">
-                <label>Car Type</label>
-                <input type="text" class="form-control" name="txtType" value="{{ $carlist->CarType }}">
+                <label>Car Model</label>
+                <input type="text" class="form-control" name="txtModel" value="{{ $carlist->CarModel }}">
             </div>
             <div class="form-group">
                 <label>Car Plate</label>
@@ -31,11 +30,13 @@
             </div>
             <div class="form-group">
                 <label>Car Image</label>
+                <input type="file" name="CarPic">
                 <img src="{{ asset('uploads/carlist/'.$carlist->CarPic) }}" width="100px" height="70px" alt="CarImage">
+                
             </div>
 
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
 </div>
-        
-@endsection
+    
+@endsection 

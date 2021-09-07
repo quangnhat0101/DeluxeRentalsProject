@@ -21,7 +21,7 @@ class CarController extends Controller
 
         $car = new car;
         $car->CarBrand = $request->input('txtBrand');
-        $car->CarType = $request->input('txtType');
+        $car->CarModel = $request->input('txtModel');
         $car->CarPlate = $request->input('txtPlate');
         $car->CarPrice = $request->input('txtPrice');
         if($request->hasfile('CarPic')){  
@@ -33,7 +33,7 @@ class CarController extends Controller
         }
         $car->save();
         
-        return redirect()->back()->with('status','Car added successfully');
+        return redirect()->back()->with('success','Car added successfully');
     }
 
 
@@ -46,7 +46,7 @@ class CarController extends Controller
     public function UpdateCar(Request $request, $id){
         $carlist = car::find($id);
         $carlist->CarBrand = $request->input('txtBrand');
-        $carlist->CarType = $request->input('txtType');
+        $carlist->CarModel = $request->input('txtModel');
         $carlist->CarPlate = $request->input('txtPlate');
         $carlist->CarPrice = $request->input('txtPrice');
         if($request->hasfile('CarPic')){  
@@ -62,7 +62,7 @@ class CarController extends Controller
         }
         $carlist->update();
         
-        return redirect()->back()->with('status','Car updated successfully');
+        return redirect()->back()->with('success','Car updated successfully');
         
     }
 

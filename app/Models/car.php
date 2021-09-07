@@ -13,7 +13,7 @@ class car extends Model
     protected $fillable = [
         'CarPlate',
         'CarPrice',
-        'CarType',
+        'CarModel',
         'CarBrand',
         'CarPic',
     ];

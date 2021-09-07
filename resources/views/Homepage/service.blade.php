@@ -1,7 +1,7 @@
 @extends('layout.layout2')
-@section('title','About us')
+@section('title','Services')
 @section('my content')
 <div class="container">
-Contact us
+Services
 </div>
 @endsection
