@@ -1,9 +1,10 @@
 <!-- Lưu tại resources/views/item/index.blade.php -->
-@extends('layout.layout')
-@section('title', 'item index')
+@extends('layout.layout2')
+@section('title', 'Staff List')
 @section('my content')
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
+<div class="container" style="margin-top: 100px; margin-bottom: 100px">
+<!-- Content Header (Page header) -->
+<section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
@@ -14,7 +15,7 @@
                             endif;
                         @endphp
                     </div> --}}
-                    <h1>Item List</h1>
+                    <h1>Staff List</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -36,43 +37,49 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                    <span><a href="{{url('staff/addstaff')}}">Create New</a></span>
+                        <h3><a href="{{url('staffcreate')}}">Create New</a></h3>
+                    
                         <!--Chèn đoạn mả <table></table vào đây-->
-                        <table border="1">
-                            <tr>
-                                <th>StaffID</th>
-                                <th>StaffName</th>
-                                <th>StaffPass</th>
-                                <th>StaffDOB</th>
-                                <th>StaffPhone</th>
-                                <th>StaffAdd</th>
-                                <th>StaffMail</th>
-                                <th>StaffSalary</th>
-                                <th>StaffPic</th>
-                                <th>CurrentStaff</th>
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>StaffID</th>
+                                    <th>StaffName</th>
+                                    <th>StaffPass</th>
+                                    <th>StaffDOB</th>
+                                    <th>StaffPhone</th>
+                                    <th>StaffAdd</th>
+                                    <th>StaffMail</th>
+                                    <th>StaffSalary</th>
+                                    <th>StaffPic</th>
+                                    <th>CurrentStaff</th>
 
-                            </tr>
+                                </tr>
+                            </thead>
+                            <tbody>
                             @foreach($rs as $data)
-                            <tr>
-                                <td>Staff00{{ $data -> StaffID }}</td>
-                                <td>{{ $data -> StaffName }}</td>
-                                <td>{{ $data -> StaffPass }}</td>
-                                <td>{{ $data -> StaffDOB }}</td>
-                                <td>{{ $data -> StaffPhone }}</td>
-                                <td>{{ $data -> StaffAdd }}</td>
-                                <td>{{ $data -> StaffMail }}</td>
-                                <td>{{ $data -> StaffSalary }}</td>
-                                <td><img src="{{ asset('img/'.$data->StaffPic) }}" width="130px" height="70px"></td>
-                                {{-- <td>{{ $data -> StaffPic }}</td> --}}
-                                <td>{{ $data -> CurrentStaff }}</td>
+                                <tr>
+                                    <td>Staff00{{ $data -> StaffID }}</td>
+                                    <td>{{ $data -> StaffName }}</td>
+                                    <td>{{ $data -> StaffPass }}</td>
+                                    <td>{{ $data -> StaffDOB }}</td>
+                                    <td>{{ $data -> StaffPhone }}</td>
+                                    <td>{{ $data -> StaffAdd }}</td>
+                                    <td>{{ $data -> StaffMail }}</td>
+                                    <td>{{ $data -> StaffSalary }}</td>
+                                    <td><img src="{{ asset('img/'.$data->StaffPic) }}" width="130px" height="70px"></td>
+                                    {{-- <td>{{ $data -> StaffPic }}</td> --}}
+                                    <td>{{ $data -> CurrentStaff }}</td>
 
-                                <td>
-                                    <a href="{{ url("staff/updatestaff/{$data -> StaffID} ") }}">Update</a>
-                                    <a href="{{ url("staff/deletestaff/{$data -> StaffID} ") }}"
-                                    onclick = "return confirm('Are you sure to delete{{$data -> StaffName}}')">Delete</a>
-                                </td>
-                            </tr>            
-                            @endforeach       
+                                    <td>
+                                        <a href="{{ url("staffupdate/{$data -> StaffID} ") }}">Update</a>
+                                        <a href="{{ url("staffdelete/{$data -> StaffID} ") }}"
+                                        onclick = "return confirm('Are you sure to delete{{$data -> StaffName}}')">Delete</a>
+                                    </td>
+                                </tr>            
+                                @endforeach  
+                            </tbody>
+                                 
                             
                         </table>
                     </div>
@@ -84,6 +91,8 @@
         </div>
         <!-- /.row -->
     </section>
+</div>
+    
 @endsection
 @section('script-section')
     <script>

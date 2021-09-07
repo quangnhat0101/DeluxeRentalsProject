@@ -96,12 +96,6 @@
 
   @yield('my content')
     
-
-
-
-   
-
-
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
@@ -186,6 +180,6 @@
 
 
 </body>
-
 @yield('script-section')
+
 </html>

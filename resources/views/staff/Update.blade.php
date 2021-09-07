@@ -1,8 +1,9 @@
 <!-- lưu tại /resources/views/item/create.blade.php -->
-@extends('layout.layout')
+@extends('layout.layout2')
 @section('title', 'Update Item')
 @section('my content')
-    <section class="content">
+<div class="container" style="margin-top: 100px; margin-bottom: 100px">
+<section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="offset-md-3 col-md-6">
@@ -14,7 +15,7 @@
                         <!-- /.card-header -->
                         <!-- form start -->
                         <!--Chèn đoạn mã <form></form> vào đây-->
-                        <form method="POST" action="{{ url('staff/updatestaffprocess/'.$staff->StaffID) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('staffupdate/'.$staff->StaffID) }}" enctype="multipart/form-data">
                             @csrf
                             <table>
                                 <tr>
@@ -72,6 +73,8 @@
             </div>
         </div>
     </section>
+</div>
+    
 @endsection
 @section('script-section')
     <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>

@@ -9,4 +9,12 @@ class SiteController extends Controller
     public function Homepage(){
         return view('Homepage.homepage');
     }
+
+    public function Contact(){
+        return view('Booking.contact');
+    }
+
+    public function About(){
+        return view('Homepage.about');
+    }
 }

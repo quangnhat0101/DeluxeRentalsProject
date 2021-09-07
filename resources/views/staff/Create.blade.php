@@ -3,9 +3,7 @@
 @section('title', 'Create new staff')
 @section('my content')
 <div class="container" style="margin-top: 100px; margin-bottom: 100px">
-
-</div>
-    <section class="content">
+<section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="offset-md-3 col-md-6">
@@ -27,7 +25,7 @@
                                 </ul>
                             </div>
                         @endif 
-                        <form method="POST" action="{{ url('staff/addstaffprocess') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('staffupdate') }}" enctype="multipart/form-data">
                             @csrf
                             <table>
                                 <tr>
@@ -88,19 +86,22 @@
             </div>
         </div>
     </section>
+</div>
+   
 @endsection
+
 @section('script-section')
-    <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+<script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            bsCustomFileInput.init();
-        });
-    </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        bsCustomFileInput.init();
+    });
+</script>
 
-    {{-- <script type="text/javascript">
-        $('.date').datepicker({  
-        format: 'mm-dd-yyyy'
-        });  
-    </script>  --}}
+{{-- <script type="text/javascript">
+    $('.date').datepicker({  
+    format: 'mm-dd-yyyy'
+    });  
+</script> 
 @endsection
