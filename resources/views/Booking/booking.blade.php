@@ -19,7 +19,7 @@
             <th>Car Brand</th>
             <th>Car Model</th>
             <th>Car Plate</th>
-            <th>Car Price</th>
+            <th>Car Price ($/day)</th>
             <th>Image</th>
             <th>Departure</th>
             <th>Arrival</th>
@@ -35,10 +35,15 @@
             <td>{{ $list -> CarBrand }}</td>
             <td>{{ $list -> CarModel }}</td>
             <td>{{ $list -> CarPlate }}</td>
-            <td>{{ $list -> CarPrice }}</td>
-            <td>
+            <td>$ {{ $list -> CarPrice }}</td>
+            <!-- This is for real use -->
+            <!-- <td>
                 <img src="{{ asset('uploads/carlist/'.$list->CarPic) }}" width="130x" height="70px" alt="CarImage">
-            </td>
+            </td> -->
+            <!--This is image for testing after seeding-->
+            <td>
+                <img src="{{ $list->CarPic }}" width="130x" height="70px">
+            </td>            
             <td><input type="date"></td>
             <td><input type="date"></td>
             <td>
