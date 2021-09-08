@@ -4,7 +4,7 @@
 <div class="container" style="margin-top: 100px; margin-bottom: 100px">
 
 <h1>List of Cars</h1>
-        <h3><a href="{{ url('/carcreate') }}">Create new item</a></h3>
+        <h3><a href="{{ url('/carcreate') }}">Add new car</a></h3>
         <table class="table table-bordered">
             <thread class="thead-dark">
                 <tr>

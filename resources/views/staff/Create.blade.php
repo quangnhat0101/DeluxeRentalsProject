@@ -3,18 +3,18 @@
 @section('title', 'Create new staff')
 @section('my content')
 <div class="container" style="margin-top: 100px; margin-bottom: 100px">
-<section class="content">
+    <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="offset-md-3 col-md-6">
+                <div class="offset-md-2 col-md-8">
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Create item</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <!--Chèn đoạn mã <form></form> vào đây-->
+                            <h3 class="card-title">Create new staff member</h3>
+                        
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <!--Chèn đoạn mã <form></form> vào đây-->
                          @if ($errors->any())
                             <div class="alert alert-danger">
                                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -24,63 +24,58 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        @endif 
-                        <form method="POST" action="{{ url('staffupdate') }}" enctype="multipart/form-data">
+                        @endif     
+                        </div>    
+                        <div class="card-body">
+                            <!-- Form start -->
+                            <form method="post" action="{{ url('staffcreate') }}" enctype="multipart/form-data">
                             @csrf
-                            <table>
-                                <tr>
-                                    <td>StaffName:</td>
-                                    <td><input name="txtsName" value="duc"></td>
-                                </tr>
+                                <div class="form-group">
+                                    <label>Staff Name</label>
+                                    <input type="text" class="form-control" name="txtsName" placeholder="Enter staff name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Staff Pass</label>
+                                    <input type="number" class="form-control" name="txtsPass" placeholder="Enter staff password">
+                                </div>
+                                <div class="form-group">
+                                    <label>Staff DoB</label>
+                                    <input class="form-control" name="ticsDOB" placeholder="Enter staff DoB">
+                                </div>
+                                <div class="form-group">
+                                    <label>Staff Phone Number</label>
+                                    <input type="number" class="form-control" name="txtsPhone" placeholder="Enter staff phone number">
+                                </div>
+                                <div class="form-group">
+                                    <label>Staff Address</label>
+                                    <input type="text" class="form-control" name="txtsAdd" placeholder="Enter staff addressr">
+                                </div>
+                                <div class="form-group">
+                                    <label>Staff Email</label>
+                                    <input type="text" class="form-control" name="txtsMail" placeholder="Enter staff emailr">
+                                </div>
+                                <div class="form-group">
+                                    <label>Staff Salary</label>
+                                    <input type="number" class="form-control" name="txtsSalary" placeholder="Enter staff salary">
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="txtsCurrent">
+                                    <label class="form-check-label" for="exampleCheck1">Current Staff</label>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label>Staff image</label>
+                                    <input type="file" class="form-control" name="txtsPic">
+                                </div>
 
-                                <tr>
-                                    <td>StaffPass:</td>
-                                    <td><input name="txtsPass" value="0147852"></td>
-                                </tr>
+                                <button type="submit" class="btn btn-primary">Create</button>
+                                <a class ="btn btn-success" href="{{ url('staffindex') }}">Return to index</a>
+                            </form>
+                            <!-- End form -->
+                        </div>   
+                        
 
-                                <tr>
-                                    <td>StaffDOB:</td>
-                                    <td><input name="txtsDOB" value="1980/01/21"></td>
-                                </tr>
-
-                                <tr>
-                                    <td>StaffPhone:</td>
-                                    <td><input name="txtsPhone" value="0123456789"></td>
-                                </tr>
-
-                                <tr>
-                                    <td>StaffAdd:</td>
-                                    <td><input name="txtsAdd" value="Hai Phong"></td>
-                                </tr>
-
-                                <tr>
-                                    <td>StaffMail:</td>
-                                    <td><input name="txtsMail" value ="duc@gmail.com"></td>
-                                </tr>
-
-                                <tr>
-                                    <td>StaffSalary:</td>
-                                    <td><input name="txtsSalary" value="1200000"></td>
-                                </tr>
-
-                                <tr>
-                                    <td>StaffPic:</td>
-                                    <td><input type="file" name="txtsPic" ></td>
-                                </tr>
-
-                                <tr>
-                                    <td>CurrentStaff:</td>
-                                    
-                                    <td><input name="txtsCurrent" value="1"></td>
-                                </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td><input type="submit" value="Add New"></td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
+                    </div>                    
                     <!-- /.card -->
                 </div>
             </div>

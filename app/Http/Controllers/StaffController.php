@@ -40,7 +40,7 @@ class StaffController extends Controller
             $sfpic = $rqst->file('txtsPic');
             $extension = $sfpic->getClientOriginalExtension();
             $filename = time().'.'.$extension;
-            $sfpic->move('img/', $filename);  
+            $sfpic->move('uploads/stafflist/', $filename);  
             $staff->StaffPic = $filename;
         }
 
@@ -69,14 +69,14 @@ class StaffController extends Controller
         $staff->StaffSalary = $rqst -> input('txtsSalary');
         
         if($rqst->hasfile('txtsPic')){
-            $destination = 'img/'.$staff->StaffPic;
+            $destination = 'uploads/stafflist/'.$staff->StaffPic;
             if(File::exists($destination)){
                 File::delete($destination);
             } 
             $sfpic = $rqst->file('txtsPic');
             $extension = $sfpic->getClientOriginalExtension();
             $filename = time().'.'.$extension;
-            $sfpic->move('img/', $filename);  
+            $sfpic->move('uploads/stafflist/', $filename);  
             $staff->StaffPic = $filename;
         }
 
