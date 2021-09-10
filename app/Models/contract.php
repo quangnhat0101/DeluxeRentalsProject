@@ -11,6 +11,7 @@ class contract extends Model
     protected $table = 'contracts';
     protected $fillable = [
         'ContractID',
+        'ContractNo',
         'ContractDate',
         'CusID',
         'StaffID',

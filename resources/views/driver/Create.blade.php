@@ -1,97 +1,84 @@
 <!-- lưu tại /resources/views/item/create.blade.php -->
-@extends('layout.layout')
-@section('title', 'item - create new')
-@section('content')
+@extends('layout.layout2')
+@section('title', 'Create New Driver')
+@section('my content')
+<div class="container" style="margin-top: 100px; margin-bottom: 100px">
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="offset-md-3 col-md-6">
+                <div class="offset-md-2 col-md-8">
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Create item</h3>
+                            @if(session('success'))
+                                <h6>{{session('success')}}</h6>
+                            @endif
+                            <h3 class="card-title">CREATE NEW DRIVER</h3>
                         </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <!--Chèn đoạn mã <form></form> vào đây-->
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        <form method="POST" action="{{ url('driver/adddriverprocess') }}" enctype="multipart/form-data"> 
-                            @csrf
-                            <table>
-                                                           
-                                <tr>
-                                    <td>DriverName:</td>
-                                    <td><input name="txtdName" value="duc"></td>
-                                </tr>
+                        <div class="card-body">
+                            <form method="POST" action="{{ url('drivercreate') }}" enctype="multipart/form-data"> 
+                                @csrf
+                                    <div class="form-group">
+                                        <label>Driver Name</label>
+                                        <input type="text" class="form-control" name="txtdName" placeholder="Enter Driver Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Driver License</label>
+                                        <input type="text" class="form-control" name="txtdLicense" placeholder="Enter Driver License">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Driver DOB</label>
+                                        <input class="form-control" name="txtdDOB" placeholder="Enter Driver DOB">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Driver Phone</label>
+                                        <input type="number" class="form-control" name="txtdPhone" placeholder="Enter Driver Phone">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Driver Address</label>
+                                        <input type="text" class="form-control" name="txtdAdd" placeholder="Enter Driver Address">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Driver Mail</label>
+                                        <input type="text" class="form-control" name="txtdMail" placeholder="EnterDriver Mail">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Driver Picture</label>
+                                        <input type="file" name="txtdPic">
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" name="txtdStatus" value="1">
+                                        <label class="form-check-label" for="exampleCheck1">Driver Status</label>                                    
+                                    </div>
+    
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" name="txtdCurrent" value="1">
+                                        <label class="form-check-label" for="exampleCheck1">Driver Current</label>                                    
+                                    </div>
+    
+                                    <br>
+                                    <button type="submit" class="btn btn-danger">Submit</button>
+                                    <a class ="btn btn-dark" href="{{ url('driverindex') }}">Return to index</a>
+                                
+                            </form>
 
-                                <tr>
-                                    <td>DriverLience:</td>
-                                    <td><input name="txtdLience" value="011166040887"></td>
-                                </tr>
-
-                                <tr>
-                                    <td>DriverDOB:</td>
-                                    <td><input name="txtdDOB" value="1980/01/21"></td>
-                                </tr>
-
-                                <tr>
-                                    <td>DriverPhone:</td>
-                                    <td><input name="txtdPhone" value="0123456789"></td>
-                                </tr>
-
-                                <tr>
-                                    <td>DriverAdd:</td>
-                                    <td><input name="txtdAdd" value="Hai Phong"></td>
-                                </tr>
-
-                                <tr>
-                                    <td>DriverMail:</td>
-                                    <td><input name="txtdMail" value ="duc@gmail.com"></td>
-                                </tr>
-
-                                <tr>
-                                    <td>DriverPic:</td>
-                                    <td><input type="file" name="txtdPic" ></td>
-                                </tr>
-
-                                <tr>
-                                    <td>DriverStatus:</td>
-                                    <td><input name="txtdStatus" value ="1"></td>
-                                </tr>
-
-                                <tr>
-                                    <td>DriverCurent:</td>
-                                    <td><input name="txtdCurent" value ="1"></td>
-                                </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td><input type="submit" value="Add New"></td>
-                                </tr>
-                            </table>
-                        </form>
+                        </div>
+                        
+                        
                     </div>
                     <!-- /.card -->
                 </div>
             </div>
         </div>
     </section>
+</div>
 @endsection
-@section('script-section')
-    <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            bsCustomFileInput.init();
-        });
-    </script>
-@endsection
+@section('script-section')
+<script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        bsCustomFileInput.init();
+    });
+</script>

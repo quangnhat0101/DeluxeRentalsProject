@@ -27,7 +27,7 @@ class DriverController extends Controller
         $driver= new driver;
 
         $driver->DriverName = $rqst -> input('txtdName');
-        $driver->DriverLience = $rqst -> input('txtdLience');
+        $driver->DriverLicense = $rqst -> input('txtdLicense');
         $driver->DriverDOB = $rqst -> input('txtdDOB');
         $driver->DriverPhone = $rqst -> input('txtdPhone');
         $driver->DriverAdd = $rqst -> input('txtdAdd');
@@ -38,15 +38,15 @@ class DriverController extends Controller
             $dpic = $rqst->file('txtdPic');
             $extension = $dpic->getClientOriginalExtension();
             $filename = time().'.'.$extension;
-            $dpic->move('img/', $filename);  
+            $dpic->move('uploads/driverlist/', $filename);  
             $driver->DriverPic = $filename;
         }
                 
         $driver->DriverStatus = $rqst -> input('txtdStatus');
-        $driver->CurentDriver = $rqst -> input('txtdCurent');
+        $driver->CurrentDriver = $rqst -> input('txtdCurrent');
 
         $driver->save();
-        return redirect() -> action('DriverController@index',['msgCreate']);
+        return redirect('driverindex')->with('status','Driver Added Successfully');
     }
 
     //UPDATE
@@ -60,35 +60,35 @@ class DriverController extends Controller
         $driver= driver::find($did);
 
         $driver->DriverName = $rqst -> input('txtdName');
-        $driver->DriverLience = $rqst -> input('txtdLience');
+        $driver->DriverLicense = $rqst -> input('txtdLicense');
         $driver->DriverDOB = $rqst -> input('txtdDOB');
         $driver->DriverPhone = $rqst -> input('txtdPhone');
         $driver->DriverAdd = $rqst -> input('txtdAdd');
         $driver->DriverMail = $rqst -> input('txtdMail');
         
         if($rqst->hasfile('txtsPic')){
-            $destination = 'img/'.$driver->DriverPic;
+            $destination = 'uploads/driverlist/'.$driver->DriverPic;
             if(File::exists($destination)){
                 File::delete($destination);
             } 
             $dpic = $rqst->file('txtdPic');
             $extension = $dpic->getClientOriginalExtension();
             $filename = time().'.'.$extension;
-            $dpic->move('img/', $filename);  
+            $dpic->move('upload/driverlist/', $filename);  
             $driver->DriverPic = $filename;
         }
                         
         $driver->DriverStatus = $rqst -> input('txtdStatus');
-        $driver->CurentDriver = $rqst -> input('txtdCurent');
+        $driver->CurrentDriver = $rqst -> input('txtdCurrent');
         $driver->update();
 
-        return redirect() -> action('DriverController@index');
+        return redirect('driverindex')->with('status','Driver Updated Successfully');
     }
 
     //DELETE
     public function delete($did){
         $driver = driver::find($did);
         $driver->delete();
-        return redirect() -> action('DriverController@index');
+        return redirect('driverindex')->with('status','Driver Deleted Successfully');
     }
 }

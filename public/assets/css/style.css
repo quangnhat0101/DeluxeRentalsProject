@@ -2178,3 +2178,9 @@ section {
   table#cart tfoot td{display:block; }
   table#cart tfoot td .btn{display:block;}
 } 
+
+/* CSS for small index on index pages*/
+.small-index {
+  margin-top: 30px;
+  font-size:  200%;
+}

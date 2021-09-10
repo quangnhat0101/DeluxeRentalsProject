@@ -47,7 +47,7 @@ class StaffController extends Controller
         $staff->CurrentStaff = $rqst -> input('txtsCurrent');
         $staff->save();
 
-        return redirect() -> action('StaffController@index',['msgCreate']);
+        return redirect('staffindex')->with('status','Staff Created Successfully');
     }
 
     //UPDATE
@@ -67,7 +67,8 @@ class StaffController extends Controller
         $staff->StaffAdd = $rqst -> input('txtsAdd');
         $staff->StaffMail = $rqst -> input('txtsMail');
         $staff->StaffSalary = $rqst -> input('txtsSalary');
-        
+        $staff->CurrentStaff = $rqst -> input('txtsCurrent');
+
         if($rqst->hasfile('txtsPic')){
             $destination = 'uploads/stafflist/'.$staff->StaffPic;
             if(File::exists($destination)){
@@ -80,17 +81,17 @@ class StaffController extends Controller
             $staff->StaffPic = $filename;
         }
 
-        $staff->CurrentStaff = $rqst -> input('txtsCurrent');
+
         $staff->update();
 
-        return redirect() -> action('StaffController@index');
+        return redirect('staffindex')->with('status','Staff Updated Successfully');
     }
 
     //DELETE
     public function delete($sfid){
         $staff = management_staff::find($sfid);
         $staff->delete();
-        return redirect() -> action('StaffController@index');
+        return redirect() -> action('staffindex');
     }
 
     

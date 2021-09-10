@@ -33,7 +33,7 @@ class CarController extends Controller
         }
         $car->save();
         
-        return redirect()->back()->with('success','Car added successfully');
+        return redirect()->back()->with('status','Car added successfully');
     }
 
 
@@ -62,7 +62,7 @@ class CarController extends Controller
         }
         $carlist->update();
         
-        return redirect()->back()->with('success','Car updated successfully');
+        return redirect()->back()->with('status','Car updated successfully');
         
     }
 

@@ -16,7 +16,7 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-car"></i></div>
               <h4 class="title"><a href=" {{ URL('carindex') }} ">CARS</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <p class="description">Display the list of cars. <br> Create, Edit or Delete car information.</p>
             </div>
           </div>
 
@@ -24,7 +24,7 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-run"></i></div>
               <h4 class="title"><a href="{{ URL('driverindex') }}">DRIVERS</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <p class="description">Display the list of drivers. <br> Create, Edit or Delete driver information.</p>
             </div>
           </div>
 
@@ -32,15 +32,15 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-group"></i></div>
               <h4 class="title"><a href="{{ URL('staffindex') }}">STAFFS</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <p class="description">Display the list of staff. <br> Create, Edit or Delete staff information.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-cog"></i></div>
-              <h4 class="title"><a href="{{ URL('maintenanceindex') }}">MAINTENANCE</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+              <div class="icon"><i class="bx bx-cart-alt"></i></div>
+              <h4 class="title"><a href="{{ URL('customerindex') }}">CUSTOMER</a></h4>
+              <p class="description">Display the list of customers.</p>
             </div>
           </div>
 
@@ -53,7 +53,7 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-user-voice"></i></div>
               <h4 class="title"><a href="{{ URL('feedbackindex') }}">FEEDBACKS</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <p class="description">Display the list of feedbacks by customer.</p>
             </div>
           </div>
 
@@ -61,15 +61,7 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
               <h4 class="title"><a href="{{ URL('contractindex') }}">CONTRACTS</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-cart-alt"></i></div>
-              <h4 class="title"><a href="{{ URL('customerindex') }}">CUSTOMER</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <p class="description">Display the list of contract. <br> Change contract status.</p>
             </div>
           </div>
 
@@ -77,9 +69,19 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-purchase-tag"></i></div>
               <h4 class="title"><a href="{{ URL('brandindex') }}">CAR BRANDS</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+              <p class="description">Display the list of car brand. <br> Create, Edit or Delete brand information.</p>
             </div>
           </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-cog"></i></div>
+              <h4 class="title"><a href="{{ URL('maintenanceindex') }}">MAINTENANCE</a></h4>
+              <p class="description">Display car maintenance documents. <br> Create, Edit or Delete maintenance information.</p>
+            </div>
+          </div>
+
+
 
         </div> <!--End row-->
 

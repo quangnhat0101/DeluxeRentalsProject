@@ -8,5 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class brand extends Model
 {
     use HasFactory;
+    protected $table ='brands';
+    protected $primaryKey ='BrandID';
+    protected $filltable =[
+        'BrandName',
+        'BrandAdd',
+        'BrandFax',
+        'BrandPhone',
+        'Brandmail',
+        'BrandLogo',
+    ];
  
 }

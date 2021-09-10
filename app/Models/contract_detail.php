@@ -13,7 +13,7 @@ class contract_detail extends Model
         'ContractDetailID',
         'ContractID',
         'DriverID',
-        'CarID',
+        'CarPlate',
         'Departure',
         'Arrival',
     ];

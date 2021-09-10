@@ -9,6 +9,7 @@ class driver extends Model
 {
     use HasFactory;
     protected $table = 'drivers';
+    protected $primaryKey = 'DriverID';
     protected $fillable = [
         'DriverName',
         'DriverLicense',

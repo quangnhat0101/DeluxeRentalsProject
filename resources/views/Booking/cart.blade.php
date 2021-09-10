@@ -5,11 +5,12 @@
         <table id="cart" class="table table-hover table-condensed">
             <thead>
             <tr>
-                <th style="width:50%">Car Ordered</th>
+                <th style="width:35%">Car Ordered</th>
+                <th style="width:15%">Car Plate</th>
                 <th style="width:10%">Price</th>
-                <th style="width:8%">Quantity</th>
-                <th style="width:22%" class="text-center">Subtotal</th>
-                <th style="width:10%"></th>
+                <th style="width:18%">No. of days</th>
+                <th style="width:17%" class="text-center">Subtotal</th>
+                <th style="width:5%"></th>
             </tr>
             </thead>
             <tbody>
@@ -26,13 +27,14 @@
                                 </div>
                             </div>
                         </td>
+                        <td data-th="CarPlate">{{ $details['CarPlate'] }}</td>
                         <td data-th="CarPrice">${{ $details['CarPrice'] }}</td>
                         <td data-th="quantity">
-                            <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity" />
+                            {{ $details['quantity'] }}
                         </td>
                         <td data-th="Subtotal" class="text-center">${{ $details['CarPrice'] * $details['quantity'] }}</td>
                         <td class="actions" data-th="">
-                            <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
+
                             <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}"><i class="fa fa-trash-o"></i></button>
                         </td>
                     </tr>
@@ -42,11 +44,16 @@
             <tfoot>
 
             <tr>
-                <td><a href="{{ url('booking') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Book another car</a></td>
+                <!--<td><a href="{{ url('booking') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Book another car</a></td>-->
                 
                 <td colspan="2" class="hidden-xs"></td>
+                <td></td>
                 <td class="hidden-xs text-center"><strong>Total ${{ $total }}</strong></td>
-                <td><a href="" class="btn btn-primary"><i class="fa fa-angle-right"></i> Checkout</a></td>
+                <form action="{{ url('checkoutcart') }}" method="post">
+                    @csrf
+                <td><button type="submit" class="btn btn-primary"><i class="fa fa-angle-right"></i> Checkout</button></td>
+                </form>
+                
             </tr>
             </tfoot>
         </table>

@@ -23,7 +23,7 @@ class CreateManagementStaffsTable extends Migration
             $table->string('StaffMail',50);          
             $table->string('StaffPic',255);
             $table->integer('StaffSalary');
-            $table->boolean('CurrentStaff');
+            $table->boolean('CurrentStaff')->nullable();
             $table->timestamps();
         });
     }

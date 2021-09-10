@@ -15,8 +15,9 @@ class CreateContractsTable extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->bigIncrements('ContractID');
+            $table->string('ContractNo',255);
             $table->date('ContractDate');
-            $table->unsignedBigInteger('CusID');
+            $table->unsignedBigInteger('CusID')->nullable();
             $table->foreign('CusID')->references('CusID')->on('customers');
             $table->unsignedBigInteger('StaffID')->nullable();
             $table->foreign('StaffID')->references('StaffID')->on('management_staffs');

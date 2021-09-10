@@ -6,18 +6,16 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="offset-md-2 col-md-8">
-                    <!-- general form elements -->
-                    <div class="card card-primary">
+                    <div class="card bg-light"><!--card start--> 
                         <div class="card-header">
-                            @if(session('success'))
-                                <h6>{{session('success')}}</h6>
+                            @if(session('status'))
+                            <h3 style="color: red" >{{session('status')}}</h3>
                             @endif
-                            <h3 class="card-title">NEW CAR INFORMATION</h3>
-                            
+                            <h1 class="card-title">NEW CAR INFORMATION</h1>                           
                         </div>
                         <div class="card-body">
                         <form method="post" action="{{ url('carcreate') }}" enctype="multipart/form-data">
-                        @csrf
+                            @csrf
                             <div class="form-group">
                                 <label>Car Brand</label>
                                 <input type="text" class="form-control" name="txtBrand" placeholder="Enter car brand">
@@ -39,14 +37,11 @@
                                 <input type="file" class="form-control" name="CarPic">
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <a class ="btn btn-success" href="{{ url('carindex') }}">Return to index</a>
+                            <button type="submit" class="btn btn-danger">Submit</button>
+                            <a class ="btn btn-dark" href="{{ url('carindex') }}">Return to index</a>
                         </form>
-                        </div>
-                        
-
-                    </div>                    
-                    <!-- /.card -->
+                        </div>                       
+                    </div>    <!-- card end-->                                   
                 </div>
             </div>
         </div>

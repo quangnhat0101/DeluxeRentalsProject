@@ -23,7 +23,8 @@ class CreateDriversTable extends Migration
             $table->string('DriverMail',50);
             $table->integer('DriverPhone');
             $table->boolean('DriverStatus');
-            $table->boolean('CurrentDriver');
+            $table->boolean('CurrentDriver')->nullable();
+            $table->boolean('DriverStatus')->nullable();
             $table->timestamps();
         });
     }

@@ -8,14 +8,14 @@
             <div class="row">
                 <div class="offset-md-2 col-md-8">
                     <!-- general form elements -->
-                    <div class="card card-primary">
+                    <div class="card bg-light">
                         <div class="card-header">
                             <h3 class="card-title">Create new staff member</h3>
                         
                             <!-- /.card-header -->
                             <!-- form start -->
                             <!--Chèn đoạn mã <form></form> vào đây-->
-                         @if ($errors->any())
+                          @if ($errors->any())
                             <div class="alert alert-danger">
                                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
                                 <ul>
@@ -24,7 +24,7 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        @endif     
+                        @endif    
                         </div>    
                         <div class="card-body">
                             <!-- Form start -->
@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Staff DoB</label>
-                                    <input class="form-control" name="ticsDOB" placeholder="Enter staff DoB">
+                                    <input class="form-control" name="txtsDOB" placeholder="Enter staff DoB">
                                 </div>
                                 <div class="form-group">
                                     <label>Staff Phone Number</label>
@@ -59,8 +59,8 @@
                                     <input type="number" class="form-control" name="txtsSalary" placeholder="Enter staff salary">
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="txtsCurrent">
-                                    <label class="form-check-label" for="exampleCheck1">Current Staff</label>
+                                    <input type="checkbox" class="form-check-input" value="1" name="txtsCurrent">
+                                    <label class="form-check-label" for="exampleCheck1">Active</label>
                                 </div>
                                 <br>
                                 <div class="form-group">
@@ -68,8 +68,8 @@
                                     <input type="file" class="form-control" name="txtsPic">
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Create</button>
-                                <a class ="btn btn-success" href="{{ url('staffindex') }}">Return to index</a>
+                                <button type="submit" class="btn btn-danger">Create</button>
+                                <a class ="btn btn-dark" href="{{ url('staffindex') }}">Return to index</a>
                             </form>
                             <!-- End form -->
                         </div>   
@@ -85,18 +85,5 @@
    
 @endsection
 
-@section('script-section')
-<script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        bsCustomFileInput.init();
-    });
-</script>
 
-{{-- <script type="text/javascript">
-    $('.date').datepicker({  
-    format: 'mm-dd-yyyy'
-    });  
-</script> 
-@endsection

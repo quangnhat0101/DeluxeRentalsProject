@@ -19,10 +19,9 @@ class CreateContractDetailsTable extends Migration
             $table->foreign('ContractID')->references('ContractID')->on('contracts');
             $table->unsignedBigInteger('DriverID')->nullable();
             $table->foreign('DriverID')->references('DriverID')->on('drivers');
-            $table->unsignedBigInteger('CarID');
-            $table->foreign('CarID')->references('CarID')->on('cars');
-            $table->date('Departure');
-            $table->date('Arrival');
+            $table->string('CarPlate',10);
+            $table->date('Departure')->nullable();
+            $table->date('Arrival')->nullable();
             $table->timestamps();
         });
     }

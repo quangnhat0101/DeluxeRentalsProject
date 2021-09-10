@@ -19,7 +19,7 @@ class CreateCarsTable extends Migration
             $table->integer('CarPrice');
             $table->string('CarModel',20);
             $table->string('CarBrand',20);
-            $table->string('CarPic',255)->nullable();
+            $table->string('CarPic',255);
             $table->timestamps();
         });
     }
