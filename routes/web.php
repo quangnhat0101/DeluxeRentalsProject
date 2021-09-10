@@ -94,3 +94,29 @@ Route::get('customerindex','CustomerController@index');
         Route::post('brandupdate/{id}','BrandController@UpdateBrand');
 
         Route::get('branddelete/{id}','BrandController@DeleteBrand');
+
+
+//----------------Customer CRUD---------------------------
+//01.READ - http://localhost:8080/DeluxeRentalsProject/public/customerindex
+Route::get('customerindex','CustomerController@customerindex');
+//02.CREATE - http://localhost:8080/DeluxeRentalsProject/public/customercreate
+Route::get('customercreate', 'CustomerController@customercreate');
+Route::post('customercreate','CustomerController@customercreateprocess');
+//03. UPDATE - http://localhost:8080/DeluxeRentalsProject/public/customerupdate/{cid}
+Route::get('customerupdate/{CusID}','CustomerController@UpdateCustomer');
+Route::post('customerupdate/{CusID}','CustomerController@UpdateCustomerProcess');
+//04. UPDATE PASSWORD - http://localhost:8080/DeluxeRentalsProject/public/customerpasswordupdate/{cid}
+Route::get('customerpassupdate/{CusID}','CustomerController@UpdatePassword');
+Route::post('customerpassupdate/{CusID}','CustomerController@UpdatePasswordProcess');
+
+//----------------Feedback CRUD---------------------------
+//01.READ - http://localhost:8080/DeluxeRentalsProject/public/feedbackindex
+Route::get('feedbackindex','FeedbackController@feedbackindex');
+//02.CREATE - http://localhost:8080/DeluxeRentalsProject/public/customercreate
+Route::get('feedbackcreate', 'FeedbackController@feedbackcreate');
+Route::post('feedbackcreate', 'FeedbackController@feedbackcreateprocess');
+//03. UPDATE - http://localhost:8080/DeluxeRentalsProject/public/customerupdate/{fid}
+Route::get('feedbackupdate/{fid}','FeedbackController@Updatefeedback');
+Route::post('feedbackupdate/{fid}', 'FeedbackController@Updatefeedbackprocess');
+//04. DELETE - http://localhost:8080/DeluxeRentalsProject/public/feedbackdelete/{fid}
+Route::get('feedbackdelete/{fid}', 'FeedbackController@DeleteFeedback');

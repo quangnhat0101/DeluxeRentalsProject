@@ -1,36 +1,63 @@
 @extends('layout.layout2')
-@section('title','Customer')
+@section('title','Customer Account')
 @section('my content')
 
-<div class="container small-index text-center">
-    <a href=" {{ url('carindex') }} " title="Car Index"><i class="bx bx-car"></i></a><span style="color: #e43c5c"> |</span>   
-    <a href=" {{ url('driverindex') }} " title="Driver Index"><i class="bx bx-run"></i></a><span style="color: #e43c5c"> |</span>
-    <a href=" {{ url('staffindex') }} " title="Staff Index"><i class="bx bx-group"></i></a><span style="color: #e43c5c"> |</span>
-    <a href=" {{ url('customerindex') }} " title="Customer Index"><i class="bx bx-cart-alt"></i></a><span style="color: #e43c5c"> |</span>
-    <a href=" {{ url('feedbackindex') }} " title="Feedback Index"><i class="bx bx-user-voice"></i></a><span style="color: #e43c5c"> |</span>
-    <a href=" {{ url('contractindex') }} " title="Contract Index"><i class="bx bx-file"></i></a><span style="color: #e43c5c"> |</span>
-    <a href=" {{ url('maintenanceindex') }} " title="Maintenance Index"><i class="bx bx-cog"></i></a><span style="color: #e43c5c"> |</span> 
-    <a href=" {{ url('brandindex') }} " title="Brand Index"><i class="bx bx-purchase-tag"></i></a>           
-</div>
-
-<div class="container" style="margin-top: 70px; margin-bottom: 100px">
-<h1 style="text-align: center; color: #e43c5c">CUSTOMER INDEX</h1>
+<div class="container" style="margin-top: 100px; margin-bottom: 100px">
+<h1 style="text-align: center">My Profile:</h1>
 <br>
 <br>
-<table class="table table-bordered table-hover">
-    <thead class="thead-dark">
-        <tr>
-            <th>ID</th>
-            <th>Car Brand</th>
-            <th>Car Type</th>
-            <th>Car Plate</th>
-            <th>Car Price</th>
-            <th>Image</th>
-            <th>Function</th>
+<table class="table table-bordered table-hover">  
+    <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <ul>
+                <li><a href="{{url('customerindex')}}">Profile Settings</a></li>
+                <form method="POST">
+                    @foreach($customerlist as $list)
+                    <li><a href="{{url('customerpassupdate/'.$list->CusID)}}">Update Password</a></li>
+                    @endforeach
+                </form>
+                <li><a href="">My Booking</a></li>
+                <li><a href="{{url('feedbackindex')}}">Feedback</a></li>
+                <li><a href="">Sign Out</a></li>
+            </ul>
+        </div>
+        <div class="col-md-6 col-sm-8">
+            <div>
+                <h3 class="uppercase underline">General Infomation</h3>
+                <br><br>
+                <form method="POST">
+                    @foreach($customerlist as $list)
+                    <div class="form-group">
+                        <label>Customer Name</label>
+                        <input type="text" class="form-control" name="txtcName" value="{{$list->CusName}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Customer Day of Birth</label>
+                        <input type="text" class="form-control" name="txtcDOB" value="{{$list->CusDOB}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Customer Address</label>
+                        <input type="text" class="form-control" name="txtcAdd" value="{{$list->CusAdd}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Customer Phone Number</label>
+                        <input type="number" class="form-control" name="txtcPhone" value="{{$list->CusPhone}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Customer Email</label>
+                        <input type="text" class="form-control" name="txtcMail" value="{{$list->CusMail}}" readonly>
+                    </div>
 
-        </tr>
-    </thead>    
-    
+                    <a href="{{url('customerupdate/'.$list->CusID)}}" class="btn btn-primary">Edit</a>
+                    @endforeach
+                    
+                </form>
+                
+                    
+               
+            </div>
+        </div>
+    </div>
 
     
 </table> 
