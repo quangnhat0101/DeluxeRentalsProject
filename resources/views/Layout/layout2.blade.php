@@ -56,27 +56,27 @@
           <li><a class="nav-link  active" href="{{ url('homepage') }}">Home</a></li>
           <li><a class="nav-link" href="{{ url('about') }}" >About</a></li>
           <li><a class="nav-link" href="{{ url('service') }}" >Services</a></li>
+          @guest
+          @else
           <li><a class="nav-link" href="{{ url('booking') }}" >Booking</a></li>
+          @endguest
           <li><a class="nav-link" href="{{ url('manage') }}" >Manage</a></li>
           <li><a href="{{ url('contact') }}">Contact</a></li>
-          <li class="dropdown"><a href="#"><span>User Profile</span> <i class="bi bi-chevron-down"></i></a>
+          @guest
+          <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li><a href="{{ url('login') }}">Login</a></li>
+              <li><a href="{{ url('register') }}">Register</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#contact">Login</a></li>
+
+          @else
+          <li class="dropdown"><a href="#"><span>User Profile</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{{ url('#') }}">Edit Profile</a></li>
+              <li><a href="{{ url('logout') }}">Logout</a></li>
+            </ul>
+          </li>
           <li>
             <div class="main-section"> <!-- Cart button-->
               <div class="dropdown">
@@ -120,6 +120,9 @@
             
                
           </li><!--End cart button-->
+          @endguest
+
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

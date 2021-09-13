@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\driver;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class DriverController extends Controller
 {
@@ -66,7 +67,7 @@ class DriverController extends Controller
         $driver->DriverAdd = $rqst -> input('txtdAdd');
         $driver->DriverMail = $rqst -> input('txtdMail');
         
-        if($rqst->hasfile('txtsPic')){
+        if($rqst->hasfile('txtdPic')){
             $destination = 'uploads/driverlist/'.$driver->DriverPic;
             if(File::exists($destination)){
                 File::delete($destination);
@@ -74,7 +75,7 @@ class DriverController extends Controller
             $dpic = $rqst->file('txtdPic');
             $extension = $dpic->getClientOriginalExtension();
             $filename = time().'.'.$extension;
-            $dpic->move('upload/driverlist/', $filename);  
+            $dpic->move('uploads/driverlist/', $filename);  
             $driver->DriverPic = $filename;
         }
                         

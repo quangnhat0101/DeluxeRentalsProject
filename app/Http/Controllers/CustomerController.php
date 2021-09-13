@@ -13,6 +13,12 @@ class CustomerController extends Controller
         return view ('customer.index',compact('customerlist'));
     }
 
+    //PROFILE
+        public function customerprofile(){
+            $customerlist = customer::all();
+            return view ('customer.profile',compact('customerlist'));
+        }
+
     //CREATE
     public function customercreate(){
         return view ('customer.create');

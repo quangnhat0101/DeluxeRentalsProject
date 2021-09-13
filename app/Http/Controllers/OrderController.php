@@ -125,7 +125,7 @@ class OrderController extends Controller
         Session::forget('cart');
         return redirect('booking');
         }
-        return redirect('about');
+        return redirect()->back()->with('status','Your cart is empty!!!');
         
     }
 }

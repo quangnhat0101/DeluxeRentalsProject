@@ -99,6 +99,7 @@ Route::get('customerindex','CustomerController@index');
 //----------------Customer CRUD---------------------------
 //01.READ - http://localhost:8080/DeluxeRentalsProject/public/customerindex
 Route::get('customerindex','CustomerController@customerindex');
+Route::get('myprofile','CustomerController@customerprofile');
 //02.CREATE - http://localhost:8080/DeluxeRentalsProject/public/customercreate
 Route::get('customercreate', 'CustomerController@customercreate');
 Route::post('customercreate','CustomerController@customercreateprocess');
@@ -108,6 +109,7 @@ Route::post('customerupdate/{CusID}','CustomerController@UpdateCustomerProcess')
 //04. UPDATE PASSWORD - http://localhost:8080/DeluxeRentalsProject/public/customerpasswordupdate/{cid}
 Route::get('customerpassupdate/{CusID}','CustomerController@UpdatePassword');
 Route::post('customerpassupdate/{CusID}','CustomerController@UpdatePasswordProcess');
+
 
 //----------------Feedback CRUD---------------------------
 //01.READ - http://localhost:8080/DeluxeRentalsProject/public/feedbackindex
@@ -120,3 +122,18 @@ Route::get('feedbackupdate/{fid}','FeedbackController@Updatefeedback');
 Route::post('feedbackupdate/{fid}', 'FeedbackController@Updatefeedbackprocess');
 //04. DELETE - http://localhost:8080/DeluxeRentalsProject/public/feedbackdelete/{fid}
 Route::get('feedbackdelete/{fid}', 'FeedbackController@DeleteFeedback');
+
+
+//----------------Registration Login Logout Password Routes---------------------------
+Route::get('register', 'Auth\RegisterController@register');
+Route::post('register', 'Auth\RegisterController@store')->name('register');
+
+Route::get('login', 'Auth\LoginController@login');
+Route::post('login', 'Auth\LoginController@store')->name('login');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('forget-password', 'Auth\ForgotPasswordController@getEmail');
+Route::post('forget-password', 'Auth\ForgotPasswordController@postEmail');
+
+Route::get('reset-password/{token}', 'Auth\ResetPasswordController@getPassword');
+Route::post('reset-password', 'Auth\ResetPasswordController@updatePassword');

@@ -19,7 +19,7 @@
         <div class="section-title">
           <h2>Introduction</h2>
           <h3>We are <span>Deluxe Rentals</span></h3>
-          <p>A leading car rental company that provides services across all 64 cities and provinces of Vietnam </p>
+          <p>A leading car rental company that provides services across all 63 cities and provinces of Vietnam </p>
         </div>
 
         <div class="row content">

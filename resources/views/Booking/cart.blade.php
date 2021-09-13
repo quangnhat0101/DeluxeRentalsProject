@@ -1,7 +1,13 @@
 @extends('layout.layout2')
 @section('title','My Cart')
 @section('my content')
+
+
     <div class="container" style="margin-top: 100px; margin-bottom: 100px">
+    <h1 style="text-align: center; color: #e43c5c">MY CART</h1>
+         @if(session('status'))
+        <h3 style="color: red" >{{session('status')}}</h3>
+        @endif
         <table id="cart" class="table table-hover table-condensed">
             <thead>
             <tr>
@@ -44,7 +50,7 @@
             <tfoot>
 
             <tr>
-                <!--<td><a href="{{ url('booking') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Book another car</a></td>-->
+                <td><a href="{{ url('booking') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Book another car</a></td>
                 
                 <td colspan="2" class="hidden-xs"></td>
                 <td></td>
