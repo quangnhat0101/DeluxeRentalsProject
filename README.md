@@ -11,3 +11,7 @@ Instruction to run project:
 8. Run php artisan db:seed <br>
 <br>
 Finally open "http://localhost:8080/[Your Folder Name]/public/homepage" and enjoy!
+<br>
+Note: 
++ Register to use Booking function. 
++ Register with email admin@admin.com to use Manage function.
