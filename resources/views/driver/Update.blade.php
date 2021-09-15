@@ -29,11 +29,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Driver DOB</label>
-                                            <input class="form-control" name="txtdDOB" value="{{ $driver->DriverDOB }}">
+                                            <input type="date" class="form-control" name="txtdDOB" value="{{ $driver->DriverDOB }}">
                                         </div>
                                         <div class="form-group">
                                             <label>Driver Phone</label>
-                                            <input type="number" class="form-control" name="txtdPhone" value="{{ $driver->DriverPhone }}">
+                                            <input type="text" class="form-control" name="txtdPhone" value="{{ $driver->DriverPhone }}">
                                         </div>
                                         <div class="form-group">
                                             <label>Driver Address</label>

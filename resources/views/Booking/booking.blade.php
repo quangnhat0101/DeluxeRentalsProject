@@ -4,10 +4,7 @@
 
 <div class="container" style="margin-top: 100px; margin-bottom: 100px">
 @if(session('status'))
-            <h5 style="color:red, font-style: italic">{{session('status')}}</h5>
- 
-@elseif(session('notice'))
-            <h5 style="color:red, font-style: italic">{{session('notice')}}</h5>
+            <h3 style="color:red; font-style: italic">{{session('status')}}</h3>
 @endif
 <h1 style="text-align: center">BOOK YOUR FAVORITE CAR!</h1>
 <br>

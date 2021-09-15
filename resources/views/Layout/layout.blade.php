@@ -59,8 +59,8 @@
           @guest
           @else
           <li><a class="nav-link" href="{{ url('booking') }}" >Booking</a></li>
-          @endguest
           <li><a class="nav-link" href="{{ url('manage') }}" >Manage</a></li>
+          @endguest
           <li><a href="{{ url('contact') }}">Contact</a></li>
           @guest
           <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-down"></i></a>
@@ -79,7 +79,7 @@
           </li>
           <li>
             <div class="main-section"> <!-- Cart button-->
-              <div class="dropdown">
+              <div class="dropdown" >
                   <button type="button" class="btn btn-info" data-toggle="dropdown">
                       <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
                   </button>
@@ -108,8 +108,7 @@
                                   </div>
                               </div>
                           @endforeach
-                      @endif
-                      
+                      @endif           
                      <div class="row text-center checkout">
                               <div><a href="{{ url('cart') }}" class="btn btn-success">View cart</a>
                      </div>

@@ -13,7 +13,7 @@
                             @if(session('success'))
                                 <h6>{{session('success')}}</h6>
                             @endif
-                            <h3 class="card-title">CREATE NEW DRIVER</h3>
+                            <h3 class="card-title">NEW DRIVER INFORMATION</h3>
                         </div>
                         <div class="card-body">
                             <form method="POST" action="{{ url('drivercreate') }}" enctype="multipart/form-data"> 
@@ -28,11 +28,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Driver DOB</label>
-                                        <input class="form-control" name="txtdDOB" placeholder="Enter Driver DOB">
+                                        <input type="date" class="form-control" name="txtdDOB" placeholder="Enter Driver DOB">
                                     </div>
                                     <div class="form-group">
                                         <label>Driver Phone</label>
-                                        <input type="number" class="form-control" name="txtdPhone" placeholder="Enter Driver Phone">
+                                        <input type="text" class="form-control" name="txtdPhone" placeholder="Enter Driver Phone">
                                     </div>
                                     <div class="form-group">
                                         <label>Driver Address</label>
@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Driver Mail</label>
-                                        <input type="text" class="form-control" name="txtdMail" placeholder="EnterDriver Mail">
+                                        <input type="text" class="form-control" name="txtdMail" placeholder="Enter Driver Mail">
                                     </div>
                                     <div class="form-group">
                                         <label>Driver Picture</label>
@@ -52,7 +52,7 @@
                                     </div>
     
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="txtdCurrent" value="1">
+                                        <input type="checkbox" class="form-check-input" name="txtdCurent" value="1">
                                         <label class="form-check-label" for="exampleCheck1">Driver Current</label>                                    
                                     </div>
     
@@ -63,8 +63,7 @@
                             </form>
 
                         </div>
-                        
-                        
+                                               
                     </div>
                     <!-- /.card -->
                 </div>
@@ -72,13 +71,6 @@
         </div>
     </section>
 </div>
+
 @endsection
 
-@section('script-section')
-<script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        bsCustomFileInput.init();
-    });
-</script>

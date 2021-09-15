@@ -9,6 +9,7 @@ class contract extends Model
 {
     use HasFactory;
     protected $table = 'contracts';
+    protected $primaryKey = 'ContractID';
     protected $fillable = [
         'ContractID',
         'ContractNo',

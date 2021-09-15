@@ -21,7 +21,11 @@ class DriverController extends Controller
 
     public function createProcess(Request $rqst){
         $rqst->validate([
+            'txtdName' => 'required|string|max:50',
+            'txtdAdd' => 'required|string|max:255',
             'txtdPic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'txtdPhone' => 'required|min:10|numeric',
+            'txtdMail' => 'required|string|email|max:50',
          ]);
 
         //Read data from textfield
@@ -57,7 +61,14 @@ class DriverController extends Controller
     }
 
     public function updateProcess(Request $rqst, $did){
-        //Read data from textfield
+
+        $rqst->validate([
+            'txtdName' => 'required|string|max:50',
+            'txtdAdd' => 'required|string|max:255',
+            'txtdPic' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'txtdPhone' => 'required|min:10|numeric',
+            'txtdMail' => 'required|string|email|max:50',
+         ]);
         $driver= driver::find($did);
 
         $driver->DriverName = $rqst -> input('txtdName');

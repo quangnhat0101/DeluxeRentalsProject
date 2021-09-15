@@ -15,13 +15,12 @@ class CreateContractDetailsTable extends Migration
     {
         Schema::create('contract_details', function (Blueprint $table) {
             $table->bigIncrements('ContractDetailID');
-            $table->unsignedBigInteger('ContractID');
-            $table->foreign('ContractID')->references('ContractID')->on('contracts');
-            $table->unsignedBigInteger('DriverID')->nullable();
-            $table->foreign('DriverID')->references('DriverID')->on('drivers');
+            $table->string('ContractNo',30);
+            $table->string('DriverID',10)->nullable();
             $table->string('CarPlate',10);
             $table->date('Departure')->nullable();
             $table->date('Arrival')->nullable();
+            $table->integer('SubTotal')->nullable();
             $table->timestamps();
         });
     }

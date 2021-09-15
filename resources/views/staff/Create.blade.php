@@ -39,20 +39,20 @@
                                     <input type="number" class="form-control" name="txtsPass" placeholder="Enter staff password">
                                 </div>
                                 <div class="form-group">
-                                    <label>Staff DoB</label>
-                                    <input class="form-control" name="txtsDOB" placeholder="Enter staff DoB">
+                                    <label>Staff DOB</label>
+                                    <input type="date" class="form-control" name="txtsDOB" placeholder="Enter staff DoB">
                                 </div>
                                 <div class="form-group">
                                     <label>Staff Phone Number</label>
-                                    <input type="number" class="form-control" name="txtsPhone" placeholder="Enter staff phone number">
+                                    <input type="text" class="form-control" name="txtsPhone" placeholder="Enter staff phone number">
                                 </div>
                                 <div class="form-group">
                                     <label>Staff Address</label>
-                                    <input type="text" class="form-control" name="txtsAdd" placeholder="Enter staff addressr">
+                                    <input type="text" class="form-control" name="txtsAdd" placeholder="Enter staff address">
                                 </div>
                                 <div class="form-group">
                                     <label>Staff Email</label>
-                                    <input type="text" class="form-control" name="txtsMail" placeholder="Enter staff emailr">
+                                    <input type="text" class="form-control" name="txtsMail" placeholder="Enter staff email">
                                 </div>
                                 <div class="form-group">
                                     <label>Staff Salary</label>
@@ -82,7 +82,8 @@
         </div>
     </section>
 </div>
-   
+
+  
 @endsection
 
 

@@ -21,8 +21,12 @@ class StaffController extends Controller
 
     public function createProcess(Request $rqst){
         $rqst->validate([
-           'txtsPic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+            'txtsName' => 'required|string|max:50',
+            'txtsAdd' => 'required|string|max:255',
+            'txtsPic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'txtsPhone' => 'required|min:10|numeric',
+            'txtsMail' => 'required|string|email|max:50',
+         ]);
         
         
         //Read data from textfield
@@ -57,6 +61,14 @@ class StaffController extends Controller
     }
 
     public function updateProcess(Request $rqst, $sfid){
+
+        $rqst->validate([
+            'txtsName' => 'required|string|max:50',
+            'txtsAdd' => 'required|string|max:255',
+            'txtsPic' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'txtsPhone' => 'required|min:10|numeric',
+            'txtsMail' => 'required|string|email|max:50',
+         ]);
         //Read data from textfield
         $staff = management_staff::find($sfid);
       

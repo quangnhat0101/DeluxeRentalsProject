@@ -1,5 +1,5 @@
 @extends('layout.layout2')
-@section('title','Car Index')
+@section('title','Contract Index')
 @section('my content')
 
 <div class="container small-index text-center">
@@ -18,45 +18,35 @@
                 <h3 style="color: red" >{{session('status')}}</h3>
             @endif
 
-    <h1 style="text-align: center; color: #e43c5c">CAR INDEX</h1>
-        <h3><a class="btn btn-danger" href="{{ url('/carcreate') }}">Add new car</a></h3>
+    <h1 style="text-align: center; color: #e43c5c">CONTRACT INDEX</h1>
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr style="text-align: center">
-                    <th>ID</th>
-                    <th>Car Brand</th>
-                    <th>Car Type</th>
-                    <th>Car Plate</th>
-                    <th>Car Price ($/day)</th>
-                    <th>Image</th>
+                    <th>Contract ID</th>
+                    <th>Contract Number</th>
+                    <th>Contract Date</th>
+                    <th>Customer ID</th>
+                    <th>Contract Status</th>
                     <th colspan=2>Function</th>
 
                 </tr>
             </thead>    
             
             <tbody>
-                @foreach($carlist as $list)
+                @foreach($contractlist as $list)
                 <tr>
-                    <td>CAR00{{ $list -> CarID }}</td>
-                    <td>{{ $list -> CarBrand }}</td>
-                    <td>{{ $list -> CarModel }}</td>
-                    <td>{{ $list -> CarPlate }}</td>
-                    <td>$ {{ $list -> CarPrice }}</td>
-                    <!--This is for real use-->
-                    <!-- <td>
-                        <img src="{{ asset('uploads/carlist/'.$list->CarPic) }}" width="130x" height="70px" alt="CarImage">
-                    </td> --> 
+                    <td>CON00{{ $list -> ContractID }}</td>
+                    <td>{{ $list -> ContractNo }}</td>
+                    <td>{{ $list -> ContractDate }}</td>
+                    <td>CUS00{{ $list -> CusID }}</td>
+                    <td>{{ $list -> ContractStatus }}</td>
 
-                    <!--This is image for testing after seeding-->
                     <td>
-                        <img src="{{ $list->CarPic }}" width="130x" height="70px">
+                        <a href="{{ url('contractdetail/'.$list->ContractNo) }}" class="btn btn-dark btn-sm">Details</a>
                     </td>
                     <td>
-                        <a href="{{ url('carupdate/'.$list->CarID) }}" class="btn btn-dark btn-sm">Edit</a>
-                    </td>
-                    <td>
-                        <a href="{{ url('cardelete/'.$list->CarID) }}" class="btn btn-danger btn-sm" 
-                        onclick = "return confirm('Are you sure to delete data of car {{$list->CarPlate}}? ')">Delete</a>
+                        <a href="{{ url('contractdelete/'.$list->ContractID) }}" class="btn btn-danger btn-sm" 
+                        onclick = "return confirm('Are you sure to delete data of contract {{$list->ContractNo}}? ')">Delete</a>
                     </td>
                 </tr>
                 @endforeach

@@ -15,13 +15,12 @@ class CreateContractsTable extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->bigIncrements('ContractID');
-            $table->string('ContractNo',255);
+            $table->string('ContractNo',30);
             $table->date('ContractDate');
-            $table->unsignedBigInteger('CusID')->nullable();
-            $table->foreign('CusID')->references('CusID')->on('customers');
-            $table->unsignedBigInteger('StaffID')->nullable();
-            $table->foreign('StaffID')->references('StaffID')->on('management_staffs');
-            $table->boolean('ContractStatus');
+            $table->unsignedBigInteger('CusID');
+            $table->foreign('CusID')->references('id')->on('users');
+            $table->string('StaffID',10)->nullable();
+            $table->boolean('ContractStatus')->nullable();
             $table->timestamps();
         });
     }

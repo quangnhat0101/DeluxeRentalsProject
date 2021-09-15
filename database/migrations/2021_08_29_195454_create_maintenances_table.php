@@ -15,8 +15,7 @@ class CreateMaintenancesTable extends Migration
     {
         Schema::create('maintenances', function (Blueprint $table) {
             $table->bigIncrements('MaintenanceID');
-            $table->unsignedBigInteger('CarID');
-            $table->foreign('CarID')->references('CarID')->on('cars');
+            $table->string('CarPlate',10);
             $table->date('MaintenanceDate');
             $table->string('Comment',255);
             $table->timestamps();

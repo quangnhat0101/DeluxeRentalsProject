@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Staff DoB</label>
-                                    <input class="form-control" name="txtsDOB" value="{{ $staff->StaffDOB }}">
+                                    <input type="date" class="form-control" name="txtsDOB" value="{{ $staff->StaffDOB }}">
                                 </div>
                                 <div class="form-group">
                                     <label>Staff Phone Number</label>
@@ -71,7 +71,7 @@
                                 <div class="form-group">
                                     <label>Car Image</label>
                                     <input type="file" name="txtsPic">
-                                    <img src="{{ asset('uploads/stafflist/'.$staff->CarPic) }}" width="100px" height="70px" alt="CarImage">
+                                    <img src="{{ asset('uploads/stafflist/'.$staff->StaffPic) }}" width="100px" height="70px" alt="CarImage">
                                     
                                 </div>
                             
@@ -89,6 +89,7 @@
         </div>
     </section>
 </div>
+
    
 @endsection
 

@@ -21,8 +21,7 @@ class CreateDriversTable extends Migration
             $table->string('DriverPic',255);
             $table->string('DriverAdd',255);
             $table->string('DriverMail',50);
-            $table->integer('DriverPhone');
-            $table->boolean('DriverStatus');
+            $table->string('DriverPhone',20);
             $table->boolean('CurrentDriver')->nullable();
             $table->boolean('DriverStatus')->nullable();
             $table->timestamps();

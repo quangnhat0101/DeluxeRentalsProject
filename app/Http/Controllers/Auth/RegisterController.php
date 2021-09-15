@@ -18,11 +18,11 @@ class RegisterController extends Controller
       public function store(Request $request)
       {
           $request->validate([
-              'name' => 'required|string|max:255',
+              'name' => 'required|string|max:50',
               'address' => 'required|string|max:255',
               'dob' => 'required|date|date_format:Y-m-d',
               'phone' => 'required|min:10|numeric',
-              'email' => 'required|string|email|max:255|unique:users',
+              'email' => 'required|string|email|max:50|unique:users',
               'password' => 'required|string|min:8|confirmed',
               'password_confirmation' => 'required',
           ]);
@@ -36,7 +36,7 @@ class RegisterController extends Controller
               'password' => Hash::make($request->password),
           ]);
 
-          return redirect('login');
+          return redirect('login')->with('status','You have successfully registered. Please login to continue!');
       }
 }
 

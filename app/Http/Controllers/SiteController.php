@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Models\User;
 
 class SiteController extends Controller
 {
@@ -19,7 +21,13 @@ class SiteController extends Controller
     }
 
     public function Manage(){
-        return view('Homepage.manage');
+        $adminid = Auth::id();
+        $admincheck = User::where('id',$adminid)->value('email');
+        if($admincheck=='admin@admin.com'):
+        return view ('Homepage.manage');
+        else:
+        return redirect()->back();
+        endif;
     }
 
     public function Service(){

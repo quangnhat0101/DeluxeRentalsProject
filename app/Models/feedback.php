@@ -8,5 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class feedback extends Model
 {
     use HasFactory;
+    protected $table ='feedback';
+    protected $primaryKey = 'FeedbackID';
+    protected $fillable = [
+        'DriverAttitude',
+        'Punctuality',
+        'ReasonalPrice',
+        'Comment',
+    ];
    
 }

@@ -18,7 +18,7 @@ class CreateManagementStaffsTable extends Migration
             $table->string('StaffName',50);
             $table->string('StaffPass',20);
             $table->date('StaffDOB');
-            $table->integer('StaffPhone');            
+            $table->string('StaffPhone',20);            
             $table->string('StaffAdd',255);
             $table->string('StaffMail',50);          
             $table->string('StaffPic',255);

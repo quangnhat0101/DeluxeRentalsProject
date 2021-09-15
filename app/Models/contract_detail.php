@@ -11,11 +11,12 @@ class contract_detail extends Model
     protected $table = 'contract_details';
     protected $fillable = [
         'ContractDetailID',
-        'ContractID',
+        'ContractNo',
         'DriverID',
         'CarPlate',
         'Departure',
         'Arrival',
+        'SubTotal',
     ];
  
 }

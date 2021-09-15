@@ -35,18 +35,15 @@
             <tbody>
                 @foreach($customerlist as $list)
                 <tr>
-                    <td>CUS00{{ $list -> CusID }}</td>
-                    <td>{{ $list -> CusName }}</td>
-                    <td>{{ $list -> CusDOB }}</td>
-                    <td>{{ $list -> CusAdd }}</td>
-                    <td>{{ $list -> CusMail }}</td>
-                    <td>{{ $list -> CusPhone }}</td>
+                    <td>CUS00{{ $list -> id }}</td>
+                    <td>{{ $list -> name }}</td>
+                    <td>{{ $list -> dob }}</td>
+                    <td>{{ $list -> address }}</td>
+                    <td>{{ $list -> email }}</td>
+                    <td>{{ $list -> phone }}</td>
                     <td>
-                        <a href="{{ url('customerupdate/'.$list->CusID) }}" class="btn btn-dark btn-sm">Edit</a>
-                    </td>
-                    <td>
-                        <a href="{{ url('customerdelete/'.$list->CusID) }}" class="btn btn-danger btn-sm" 
-                        onclick = "return confirm('Are you sure to delete data of car {{$list->CusID}}? ')">Delete</a>
+                        <a href="{{ url('customerdelete/'.$list->id) }}" class="btn btn-danger btn-sm" 
+                        onclick = "return confirm('Are you sure to delete data of {{$list->name}}? ')">Delete</a>
                     </td>
                 </tr>
                 @endforeach

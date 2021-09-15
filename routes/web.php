@@ -111,6 +111,19 @@ Route::get('customerpassupdate/{CusID}','CustomerController@UpdatePassword');
 Route::post('customerpassupdate/{CusID}','CustomerController@UpdatePasswordProcess');
 
 
+
+//----------------Maintenance CRUD---------------------------
+
+Route::get('maintenanceindex','MaintenanceController@MaintenanceIndex');
+
+Route::get('maintenancecreate','MaintenanceController@CreateMaintenance');
+Route::post('maintenancecreate','MaintenanceController@StoreMaintenance');
+
+Route::get('maintenanceupdate/{id}','MaintenanceController@EditMaintenance');
+Route::post('maintenanceupdate/{id}','MaintenanceController@UpdateMaintenance');
+
+Route::get('maintenancedelete/{id}','MaintenanceController@DeleteMaintenance');
+
 //----------------Feedback CRUD---------------------------
 //01.READ - http://localhost:8080/DeluxeRentalsProject/public/feedbackindex
 Route::get('feedbackindex','FeedbackController@feedbackindex');
@@ -137,3 +150,8 @@ Route::post('forget-password', 'Auth\ForgotPasswordController@postEmail');
 
 Route::get('reset-password/{token}', 'Auth\ResetPasswordController@getPassword');
 Route::post('reset-password', 'Auth\ResetPasswordController@updatePassword');
+
+//----------------COntract Routes---------------------------
+
+Route::get('contractindex','ContractController@contractIndex');
+Route::get('contractdelete/{id}','ContractController@contractDelete');

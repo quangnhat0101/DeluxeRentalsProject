@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\customer;
+use App\Models\User;
 
 class CustomerController extends Controller
 {
     //READ
     public function customerindex(){
-        $customerlist = customer::all();
+        $customerlist = User::all();
         return view ('customer.index',compact('customerlist'));
     }
 

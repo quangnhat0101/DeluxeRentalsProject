@@ -15,10 +15,8 @@ class CreateFeedbackTable extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->bigIncrements('FeedbackID');
-            $table->unsignedBigInteger('Contract_ID');
-            $table->foreign('Contract_ID')->references('ContractID')->on('contracts');
-            $table->unsignedBigInteger('Cus_ID');
-            $table->foreign('Cus_ID')->references('CusID')->on('customers');
+            $table->string('ContractNo',255);
+            $table->String('Cus_ID',10);
             $table->integer('DriverAttitude');
             $table->integer('Punctuality');
             $table->integer('ReasonalPrice');

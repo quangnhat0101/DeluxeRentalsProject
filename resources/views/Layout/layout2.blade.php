@@ -59,8 +59,8 @@
           @guest
           @else
           <li><a class="nav-link" href="{{ url('booking') }}" >Booking</a></li>
-          @endguest
           <li><a class="nav-link" href="{{ url('manage') }}" >Manage</a></li>
+          @endguest
           <li><a href="{{ url('contact') }}">Contact</a></li>
           @guest
           <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-down"></i></a>
