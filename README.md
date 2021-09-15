@@ -14,8 +14,8 @@
   <br>
   Finally open "http://localhost:8080/[Your Folder Name]/public/homepage" and enjoy!
   <br>
-  Note:
   <br>
+  <h4>Note:</h4>
   + Register to use Booking function. <br>
   + Register with email admin@admin.com to use Manage function.
 
