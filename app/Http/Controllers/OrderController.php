@@ -110,7 +110,7 @@ class OrderController extends Controller
         $mm =  $date->minute;
         $ss = $date->second;
         $time = $dd.$hh.$mm.$ss;
-        $contractNo = "CUS00".$cusID."/".$time;
+        $contractNo = "CUS00".$cusID."_".$time;
         
         //Add data to contract table
         $cart = Session::get('cart');

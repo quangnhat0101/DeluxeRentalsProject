@@ -155,3 +155,4 @@ Route::post('reset-password', 'Auth\ResetPasswordController@updatePassword');
 
 Route::get('contractindex','ContractController@contractIndex');
 Route::get('contractdelete/{id}','ContractController@contractDelete');
+Route::get('contractdetail/{id}','ContractController@seeContractDetail');

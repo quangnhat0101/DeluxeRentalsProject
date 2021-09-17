@@ -17,18 +17,25 @@ class ContractController extends Controller
         $contractlist = contract::all();
         return view ('contract.index',compact('contractlist'));
         else:
-        return redirect('Homepage.homepage');
+        return redirect('homepage');
         endif;
     }
 
-    public function SeeContractDetail($id){
-
+    public function seeContractDetail($id){
+        $contract = contract::where('ContractNo',$id)->get();
+        $detail = contract_detail::where('ContractNo',$id)->get();
+        return view ('contract.contractdetails', array('contract' => $contract, 'detail' => $detail));
     }
 
 
     public function contractDelete($id){
         $contract = contract::find($id);
+        $contractdetail = $contract->ContractNo;
+        $detaildelete = contract_detail::where('ContractNo',$contractdetail);
+        $detaildelete->delete();
         $contract->delete();
+
+
 
         return redirect()->back()->with('status','Contract deleted successfully');
     }
