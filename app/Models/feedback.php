@@ -11,6 +11,8 @@ class feedback extends Model
     protected $table ='feedback';
     protected $primaryKey = 'FeedbackID';
     protected $fillable = [
+        'ContractNo',
+        'Cus_ID',
         'DriverAttitude',
         'Punctuality',
         'ReasonalPrice',

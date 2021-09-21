@@ -73,52 +73,43 @@
           @else
           <li class="dropdown"><a href="#"><span>User Profile</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="{{ url('#') }}">Edit Profile</a></li>
+              <li><a href="{{ url('myprofile') }}">My Profile</a></li>
               <li><a href="{{ url('logout') }}">Logout</a></li>
             </ul>
           </li>
           <li>
-            <div class="main-section"> <!-- Cart button-->
-              <div class="dropdown" >
-                  <button type="button" class="btn btn-info" data-toggle="dropdown">
-                      <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+            <div class="cart-section"> <!-- Cart button-->
+
+              <div class="dropdown" style="margin: 20px">
+                  <button type="button" class="btn btn-danger" data-toggle="dropdown">
+                      <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-dark">{{ count((array) session('cart')) }}</span>
                   </button>
-                  <div class="dropdown-menu" style="padding: 20px">
+                  <div class="dropdown-menu">
                       <div class="row total-header-section">
-                          <div class="col-lg-6 col-sm-6 col-6">
+                          <div class="col-lg-5 col-sm-5 col-5">
                               <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
                           </div>
                           <?php $total = 0 ?>
                           @foreach((array) session('cart') as $id => $details)
                               <?php $total += $details['CarPrice'] * $details['quantity'] ?>
                           @endforeach
-                          <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
+                          <div class="col-lg-6 col-sm-6 col-6 total-section">
                               <p>Total: <span class="text-info">$ {{ $total }}</span></p>
                           </div>
                       </div>
-                      @if(session('cart'))
-                          @foreach(session('cart') as $id => $details)
-                              <div class="row cart-detail">
-                                  <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
-                                      <img src="{{ asset('uploads/carlist/'.$details['CarPic']) }}" height=50%/>
-                                  </div>
-                                  <div lass="col-lg-8 col-sm-8 col-8 cart-detail-product">
-                                      <p>{{ $details['CarBrand'] }} {{ $details['CarModel'] }}</p>
-                                      <span class="price text-info"> ${{ $details['CarPrice'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
-                                  </div>
-                              </div>
-                          @endforeach
-                      @endif           
-                     <div class="row text-center checkout">
-                              <div><a href="{{ url('cart') }}" class="btn btn-success">View cart</a>
-                     </div>
-                      
+
+                      <div class="row">
+
+                          <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
+                            <div class="btn btn-danger text-center">
+                              <a href="{{ url('cart') }}" class="text-center" >View your cart</a>
+                            </div>
+                          </div>
+                      </div>
                   </div>
               </div>
-            </div><!--Cart button-->
-            
-               
-          </li><!--End cart button-->
+            </div><!--End Cart button-->                        
+          </li>
           @endguest
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -145,7 +136,7 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>Deluxe Rentals</h3>
             <p>
-              01 Nguyen Hue Street, District 1 <br>
+              02 Nguyen Hue Street, District 1 <br>
               Ho Chi Minh City<br>
               Vietnam <br><br>
               <strong>Phone:</strong> +84 028 666 888<br>

@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\car;
 use App\Models\contract;
 use App\Models\contract_detail;
+use App\Models\brand;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Support\Facades\Session;
 use Auth;
 
@@ -15,10 +17,28 @@ class OrderController extends Controller
     public function BookCar(){
         if(Auth::check()):
         $carlist = car::all();
-        return view ('booking.booking',compact('carlist'));
+        $brandlist = brand::all();
+        return view ('booking.bookingindex',array('carlist' => $carlist, 'brandlist' => $brandlist))->with('car','Car');
         else:
         return redirect('login')->with('status','Please login to continue!');
         endif;
+    }
+
+    public function BookACar($id){
+        if(Auth::check()):
+        $carlist = car::where('CarID',$id)->get();
+        return view ('booking.bookcar',compact('carlist'));
+        else:
+        return redirect('login')->with('status','Please login to continue!');
+        endif;
+    }
+
+    public function filterCar($id){
+        $car = $id;
+        $carlist = car::where('CarBrand',$id)->get();
+        $brandlist = brand::all();
+        return view ('booking.bookingindex',array('carlist' => $carlist, 'brandlist' => $brandlist))->with('car',$car);
+
     }
 
 
@@ -32,9 +52,25 @@ class OrderController extends Controller
     }
 
 
-    public function addToCart($id)
-    {
+    public function addToCart(Request $request, $id)
+    
+    {   $request->validate([
+        'departure' => 'required|after:yesterday',
+        'arrival' => 'required|after_or_equal:departure',
+        ],[
+        'departure.after' => 'Departure date cannot be in the past',
+        'arrival.after_or_equal' => 'Arrival date must be equal or later than departure date',
+        ]);
+
+
         $car = car::find($id);
+        $departure = $request->input('departure');
+        $arrival = $request->input('arrival');
+        $datetime1 = new DateTime($departure);
+        $datetime2 = new DateTime($arrival);
+        $interval = $datetime1->diff($datetime2);
+        $days = ($interval->format('%a'))+1;//now do whatever you like with $days
+
         if(!$car) {
              abort(404);
         }
@@ -47,7 +83,9 @@ class OrderController extends Controller
                         "CarModel" => $car->CarModel,
                         "CarPlate" => $car->CarPlate,
                         "CarPrice" => $car->CarPrice,
-                        "quantity" => 1,
+                        "Departure" => $departure,
+                        "Arrival" => $arrival,
+                        "quantity" => $days,
                         "CarPic" => $car->CarPic
                     ]
             ];
@@ -64,7 +102,9 @@ class OrderController extends Controller
             "CarModel" => $car->CarModel,
             "CarPlate" => $car->CarPlate,
             "CarPrice" => $car->CarPrice,
-            "quantity" => 1,
+            "Departure" => $departure,
+            "Arrival"  => $arrival,
+            "quantity" => $days,
             "CarPic" => $car->CarPic
         ];
         session()->put('cart', $cart);
@@ -128,6 +168,8 @@ class OrderController extends Controller
         $contract_detail = new contract_detail;
         $contract_detail->ContractNo  = $contract->ContractNo;
         $contract_detail->CarPlate    = $detail['CarPlate'];
+        $contract_detail->Departure   = $detail['Departure'];
+        $contract_detail->Arrival     = $detail['Arrival'];
         $contract_detail->SubTotal    = $detail['CarPrice']*$detail['quantity'];
         $contract_detail->save();  
         endforeach;

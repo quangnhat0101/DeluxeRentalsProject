@@ -18,34 +18,62 @@
                         <div class="card-body">
                             <form method="POST" action="{{ url('drivercreate') }}" enctype="multipart/form-data"> 
                                 @csrf
-                                    <div class="form-group">
+                                <div class="form-group">
                                         <label>Driver Name</label>
-                                        <input type="text" class="form-control" name="txtdName" placeholder="Enter Driver Name">
+                                        <input type="text" class="form-control" value="{{ old('txtdName') }}" name="txtdName" placeholder="Enter Driver Name">
+                                        @if ($errors->has('txtdName'))
+                                            <span class="text-danger">{{ $errors->first('txtdName') }}</span>
+                                        @endif
                                     </div>
+
                                     <div class="form-group">
                                         <label>Driver License</label>
-                                        <input type="text" class="form-control" name="txtdLicense" placeholder="Enter Driver License">
+                                        <input type="text" class="form-control" value="{{ old('txtdLicense') }}" name="txtdLicense" placeholder="Enter Driver License">
+                                        @if ($errors->has('txtdLicense'))
+                                            <span class="text-danger">{{ $errors->first('txtdLicense') }}</span>
+                                        @endif
                                     </div>
+
                                     <div class="form-group">
                                         <label>Driver DOB</label>
-                                        <input type="date" class="form-control" name="txtdDOB" placeholder="Enter Driver DOB">
+                                        <input type="date" class="form-control" name="txtdDOB" placeholder="Enter Driver DOB" value="{{ old('txtdDOB') }}">
+                                        @if ($errors->has('txtdDOB'))
+                                            <span class="text-danger">{{ $errors->first('txtdDOB') }}</span>
+                                        @endif
                                     </div>
+
                                     <div class="form-group">
                                         <label>Driver Phone</label>
-                                        <input type="text" class="form-control" name="txtdPhone" placeholder="Enter Driver Phone">
+                                        <input type="text" class="form-control" value="{{ old('txtdPhone') }}" name="txtdPhone" placeholder="Enter Driver Phone">
+                                        @if ($errors->has('txtdPhone'))
+                                            <span class="text-danger">{{ $errors->first('txtdPhone') }}</span>
+                                        @endif
                                     </div>
+
                                     <div class="form-group">
                                         <label>Driver Address</label>
-                                        <input type="text" class="form-control" name="txtdAdd" placeholder="Enter Driver Address">
+                                        <input type="text" class="form-control" value="{{ old('txtdAdd') }}" name="txtdAdd" placeholder="Enter Driver Address">
+                                        @if ($errors->has('txtdAdd'))
+                                            <span class="text-danger">{{ $errors->first('txtdAdd') }}</span>
+                                        @endif
                                     </div>
+
                                     <div class="form-group">
                                         <label>Driver Mail</label>
-                                        <input type="text" class="form-control" name="txtdMail" placeholder="Enter Driver Mail">
+                                        <input type="text" class="form-control" value="{{ old('txtdMail') }}" name="txtdMail" placeholder="Enter Driver Mail">
+                                        @if ($errors->has('txtdMail'))
+                                            <span class="text-danger">{{ $errors->first('txtdMail') }}</span>
+                                        @endif
                                     </div>
+
                                     <div class="form-group">
                                         <label>Driver Picture</label>
-                                        <input type="file" name="txtdPic">
+                                        <input type="file" name="txtdPic" value="{{ old('txtdPic') }}">
+                                        @if ($errors->has('txtdPic'))
+                                            <span class="text-danger">{{ $errors->first('txtdPic') }}</span>
+                                        @endif 
                                     </div>
+                                    
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" name="txtdStatus" value="1">
                                         <label class="form-check-label" for="exampleCheck1">Driver Status</label>                                    

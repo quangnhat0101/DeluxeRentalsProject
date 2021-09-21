@@ -40,12 +40,26 @@
             <!--This is image for testing after seeding-->
             <td>
                 <img src="{{ $list->CarPic }}" width="130x" height="70px">
-            </td>            
-            <td><input type="date"></td>
-            <td><input type="date"></td>
+            </td>  
+            <form method="get" action="{{ url('add-to-cart/'.$list->CarID) }}">         
             <td>
-                <a href="{{ url('add-to-cart/'.$list->CarID) }}" class="btn btn-warning btn-sm">Add to cart</a>
+                <input type="date" name="departure" value="{{ old('departure') }}">
+                <br>
+                @if ($errors->has('departure'))
+                    <span class="text-danger font-italic">{{ $errors->first('departure') }}</span>
+                @endif  
             </td>
+            <td>
+                <input type="date" name="arrival" class="@error('arrival') is-invalid @enderror">
+                <br>
+                @if ($errors->has('arrival'))
+                    <span class="text-danger font-italic">{{ $errors->first('arrival') }}</span>
+                @endif  
+            </td>
+            <td>
+                <button type="submit" class="btn btn-warning btn-sm">Add to cart</button>
+            </td>
+            </form>
         </tr>
         @endforeach
     </tbody>

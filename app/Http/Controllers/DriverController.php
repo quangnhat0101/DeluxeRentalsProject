@@ -21,12 +21,26 @@ class DriverController extends Controller
 
     public function createProcess(Request $rqst){
         $rqst->validate([
-            'txtdName' => 'required|string|max:50',
-            'txtdAdd' => 'required|string|max:255',
             'txtdPic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'txtdPhone' => 'required|min:10|numeric',
-            'txtdMail' => 'required|string|email|max:50',
-         ]);
+            'txtdName' => 'required|min:3|max:20',
+            'txtdMail' => 'required|email',  
+            'txtdDOB' => 'required|after:1980-01-01|before:2002-01-01',
+            'txtdPhone' => 'required|digits_between:10,20|numeric',
+            'txtdLicense' => 'required',
+        ], [
+            'txtdPic.required' => 'Please upload driver picture ',
+            'txtdName.required' => 'Please enter driver name',
+            'txtdName.max' => 'Driver name cannot more than 20 character',
+            'txtdMail.required' => 'Please enter driver email',
+            'txtdMail.email' => 'Please enter an appropriate email',
+            'txtdDOB.required' => 'Please enter driver birthday',
+            'txtdDOB.after' => 'Driver must be younger than 41',
+            'txtdDOB.before' => 'Driver must be younger than 19',
+            'txtdLicense' => 'Please enter driver license number',
+            'txtdPhone.required' => 'Please enter driver phone number', 
+            'txtdPhone.digits_between' => 'Driver phone number must be at least 10 digits',          
+            'txtdPhone.numeric' => 'Please enter only numeric value',
+        ]);
 
         //Read data from textfield
         $driver= new driver;
@@ -63,12 +77,27 @@ class DriverController extends Controller
     public function updateProcess(Request $rqst, $did){
 
         $rqst->validate([
-            'txtdName' => 'required|string|max:50',
-            'txtdAdd' => 'required|string|max:255',
             'txtdPic' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'txtdPhone' => 'required|min:10|numeric',
-            'txtdMail' => 'required|string|email|max:50',
-         ]);
+            'txtdName' => 'required|min:3|max:20',
+            'txtdMail' => 'required|email',  
+            'txtdDOB' => 'required|after:1980-01-01|before:2002-01-01',
+            'txtdPhone' => 'required|digits_between:10,20|numeric',
+            'txtdLicense' => 'required',
+        ], [
+            'txtdPic.required' => 'Please upload driver picture ',
+            'txtdName.required' => 'Please enter driver name',
+            'txtdName.max' => 'Driver name cannot more than 20 character',
+            'txtdMail.required' => 'Please enter driver email',
+            'txtdMail.email' => 'Please enter an appropriate email',
+            'txtdDOB.required' => 'Please enter driver birthday',
+            'txtdDOB.after' => 'Driver must be younger than 41',
+            'txtdDOB.before' => 'Driver must be younger than 19',
+            'txtdLicense' => 'Please enter driver license number',
+            'txtdPhone.required' => 'Please enter driver phone number', 
+            'txtdPhone.digits_between' => 'Driver phone number must be at least 10 digits',          
+            'txtdPhone.numeric' => 'Please enter only numeric value',
+        ]);
+        
         $driver= driver::find($did);
 
         $driver->DriverName = $rqst -> input('txtdName');

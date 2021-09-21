@@ -27,6 +27,7 @@
                     <th>Contract Date</th>
                     <th>Customer ID</th>
                     <th>Contract Status</th>
+                    <th>Feedback</th>
                     <th colspan=2>Function</th>
 
                 </tr>
@@ -39,8 +40,16 @@
                     <td>{{ $list -> ContractNo }}</td>
                     <td>{{ $list -> ContractDate }}</td>
                     <td>CUS00{{ $list -> CusID }}</td>
-                    <td>{{ $list -> ContractStatus }}</td>
-
+                    @if($list->ContractStatus == 1)
+                        <td>Active</td>
+                    @else
+                        <td>Completed</td>
+                    @endif
+                    @if($list->FeedbackStatus == 1)
+                        <td>Yes</td>
+                    @else
+                        <td>No</td>
+                    @endif
                     <td>
                         <a href="{{ url('contractdetail/'.$list->ContractNo) }}" class="btn btn-dark btn-sm">Details</a>
                     </td>

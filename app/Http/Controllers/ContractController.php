@@ -39,4 +39,42 @@ class ContractController extends Controller
 
         return redirect()->back()->with('status','Contract deleted successfully');
     }
+
+    public function detailUpdate($id){
+        $detail = contract_detail::find($id);
+        return view('contract.detailupdate',compact('detail'));
+    }
+
+    public function detailUpdateProcess(Request $request, $id){
+        $detail = contract_detail::find($id);
+        $detail->DriverID = $request->input('txtDriverID');
+        $detail->CarPlate = $request->input('txtCarPlate');
+        $detail->Departure = $request->input('txtDeparture');
+        $detail->Arrival = $request->input('txtArrival');
+        $detail->SubTotal = $request->input('txtSubtotal');
+        $detail->update();
+        
+        return redirect('contractdetail/'.$detail->ContractNo)->with('status','Contract detail updated successfully');
+    }
+
+    public function detailDelete($id){
+        $detail = contract_detail::find($id);
+        $detail->delete();
+
+        return redirect()->back()->with('status','Contract detail deleted successfully');
+    }       
+    
+
+    public function contractStaffEdit($id){
+        $contract = contract::find($id);
+        return view('contract.contractstaffedit',compact('contract'));
+    }
+
+    public function contractStaffUpdate(Request $request, $id){
+        $contract = contract::find($id);
+        $contract->StaffID = $request->input('txtStaffID');
+        $contract->update();
+        return redirect('contractdetail/'.$contract->ContractNo)->with('status','Staff updated successfully');
+    }
+
 }

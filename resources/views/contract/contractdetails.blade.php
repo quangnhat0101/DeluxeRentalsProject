@@ -22,48 +22,122 @@
     <h1 style="text-align: center; color: #e43c5c">CONTRACT DETAILS</h1>
     <br>
     @foreach($contract as $getcontract)
-    <h4>CONTRACT NUMBER: {{ $getcontract->ContractNo }}</h4>
-    <h4>CONTRACT DATE: {{ $getcontract->ContractDate }}</h4>
-    <h4>CUSTOMER ID: CUS00{{ $getcontract->CusID }}</h4>
+    <h4><span style="font-weight: bold">CONTRACT NUMBER:</span> {{ $getcontract->ContractNo }}</h4>
+    <h4><span style="font-weight: bold">CONTRACT DATE:</span> {{ $getcontract->ContractDate }}</h4>
+    <h4><span style="font-weight: bold">CUSTOMER ID:</span> CUS00{{ $getcontract->CusID }}</h4>
+
+    @if($getcontract->StaffID)
+    <h4>
+        <span style="font-weight: bold">RESPONSIBLE STAFF ID:</span> STF00{{ $getcontract->StaffID }} 
+        <a class="btn btn-dark" style="color: white" data-toggle="modal" id="smallButton" data-target="#smallModal" data-attr="{{ url('contractstaffedit/'.$getcontract->ContractID) }}" title="show">
+        Edit Staff </a>
+    </h4> 
+    @else
+    <h4>
+        <span style="font-weight: bold">RESPONSIBLE STAFF ID:</span> 
+        <a class="btn btn-dark" style="color: white" data-toggle="modal" id="smallButton" data-target="#smallModal" data-attr="{{ url('contractstaffedit/'.$getcontract->ContractID) }}" title="show">
+        Add/Staff </a>
+    </h4> 
+    @endif
+
     @endforeach
     <br>
-    <h3>DETAILS</h3>
+    <h3 style="text-align: center; color: #e43c5c">DETAILS</h3>
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr style="text-align: center">
                     <th>ID</th>
-                    <th>Contract Number</th>
                     <th>Driver ID</th>
                     <th>Car Plate </th>
                     <th>Departure</th>
                     <th>Arrival</th>
+                    <th>Price ($)</th>
                     <th colspan=2>Function</th>
 
                 </tr>
             </thead>    
             
             <tbody>
-                @foreach($detail as $list)
+            <?php $total = 0 ?>
+
+            @foreach($detail as $list)
+            <?php $total += $list->SubTotal?>
                 <tr>
                     <td>CD00{{ $list -> ContractDetailID }}</td>
-                    <td>{{ $list -> ContractNo }}</td>
                     <td>{{ $list -> DriverID }}</td>
                     <td>{{ $list -> CarPlate }}</td>
                     <td>{{ $list -> Departure }}</td>
                     <td>{{ $list -> Arrival }}</td>
-
+                    <td>{{ $list -> SubTotal }}</td>
                     <td>
                         <a href="{{ url('detailupdate/'.$list->ContractDetailID) }}" class="btn btn-dark btn-sm">Edit</a>
                     </td>
                     <td>
-                        <a href="{{ url('detailtdelete/'.$list->ContractDetailID) }}" class="btn btn-danger btn-sm" 
+                        <a href="{{ url('detaildelete/'.$list->ContractDetailID) }}" class="btn btn-danger btn-sm" 
                         onclick = "return confirm('Are you sure to delete data of contract {{$list->ContractNo}}? ')">Delete</a>
                     </td>
                 </tr>
                 @endforeach
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="font-weight: bold">Total ($):</td>
+                    <td style="font-weight: bold">{{ $total }}</td>
+                    <td></td>
+
+                </tr>
+
             </tbody>
             
         </table>
 </div>
 
+<!-- Add/Edit Staff Modal -->
+    <div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                <span style="font-weight: bold; text-align: center"> UPDATE RESPONSIBLE STAFF</span>
+                </div>
+                <div class="modal-body" id="smallBody">
+                    <div>
+                        <!-- ModalContent -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Script for modal -->
+    <script>
+        $(document).on('click', '#smallButton', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            $.ajax({
+                url: href,
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    $('#smallModal').modal("show");
+                    $('#smallBody').html(result).show();
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
+        });
+
+    </script>
 @endsection

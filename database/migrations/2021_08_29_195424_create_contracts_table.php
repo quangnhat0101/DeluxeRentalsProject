@@ -21,6 +21,7 @@ class CreateContractsTable extends Migration
             $table->foreign('CusID')->references('id')->on('users');
             $table->string('StaffID',10)->nullable();
             $table->boolean('ContractStatus')->nullable();
+            $table->boolean('FeedbackStatus')->nullable();
             $table->timestamps();
         });
     }

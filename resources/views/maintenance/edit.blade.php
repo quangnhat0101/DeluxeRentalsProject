@@ -1,44 +1,60 @@
 @extends('layout.layout2')
-@section('title', 'Staff List')
+@section('title', 'Update Maintenance Report')
 @section('my content')
 
-<div class="container small-index text-center">
-    <a href=" {{ url('carindex') }} " title="Car Index"><i class="bx bx-car"></i></a><span style="color: #e43c5c"> |</span>   
-    <a href=" {{ url('driverindex') }} " title="Driver Index"><i class="bx bx-run"></i></a><span style="color: #e43c5c"> |</span>
-    <a href=" {{ url('staffindex') }} " title="Staff Index"><i class="bx bx-group"></i></a><span style="color: #e43c5c"> |</span>
-    <a href=" {{ url('customerindex') }} " title="Customer Index"><i class="bx bx-cart-alt"></i></a><span style="color: #e43c5c"> |</span>
-    <a href=" {{ url('feedbackindex') }} " title="Feedback Index"><i class="bx bx-user-voice"></i></a><span style="color: #e43c5c"> |</span>
-    <a href=" {{ url('contractindex') }} " title="Contract Index"><i class="bx bx-file"></i></a><span style="color: #e43c5c"> |</span>
-    <a href=" {{ url('maintenanceindex') }} " title="Maintenance Index"><i class="bx bx-cog"></i></a><span style="color: #e43c5c"> |</span> 
-    <a href=" {{ url('brandindex') }} " title="Brand Index"><i class="bx bx-purchase-tag"></i></a>           
+<div class="container" style="margin-top: 100px; margin-bottom: 100px">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="offset-md-2 col-md-8">
+                    <!-- general form elements -->
+                    <div class="card bg-light">
+                        <div class="card-header">
+                            <h1 class="card-title">Update Maintenance Report</h1>
+                            @if(session('status'))
+                                <h6>{{session('status')}}</h6>
+                            @endif
+                        </div>                         
+                         @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            </div>
+                        @endif     
+   
+                        <div class="card-body">
+                            <!-- Form start -->
+                            <form method="post" action="{{ url('maintenanceupdate/'.$maintenancelist->MaintenanceID) }}" enctype="multipart/form-data">
+                            @csrf
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <input type="date" class="form-control" name="txtDate" value="{{ $maintenancelist->MaintenanceDate }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Car</label>
+                                    <input type="text" class="form-control" name="txtCarPlate" value="{{ $maintenancelist->CarPlate }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Comment</label>
+                                    <input type="text" class="form-control" name="txtComment" value="{{ $maintenancelist->Comment }}">
+                                </div>
+                                <button type="submit" class="btn btn-danger">Update</button>
+                                <a class ="btn btn-dark" href="{{ url('maintenanceindex') }}">Return to index</a>
+                            </form>
+                            <!-- End form -->
+                        </div>                          
+                    </div>                    
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
-<div class="container  overflow-auto" style="margin-top: 70px; margin-bottom: 100px">
-
-            @if(session('status'))
-                <h3 style="color: red" >{{session('status')}}</h3>
-            @endif
-<h1>Edit Maintenance</h1>
-<br>
-<br>
-
-
-    <form method="post" action="{{ url('maintenanceupdate/'.$maintenancelist->MaintenanceID) }}" enctype="multipart/form-data">
-    @csrf
-        <div class="form-group">
-            <label>Date</label>
-            <input type="date" class="form-control" name="txtDate" value="{{ $maintenancelist->MaintenanceDate }}">
-        </div>
-        <div class="form-group">
-            <label>Car</label>
-            <input type="text" class="form-control" name="txtCarPlate" value="{{ $maintenancelist->CarPlate }}">
-        </div>
-        <div class="form-group">
-            <label>Comment</label>
-            <input type="text" class="form-control" name="txtComment" value="{{ $maintenancelist->Comment }}">
-        </div>
-        <button type="submit" class="btn btn-danger">Submit</button>
-        <a class ="btn btn-dark" href="{{ url('maintenanceindex') }}">Return to index</a>
-    </form>
-</div>
+   
 @endsection
+
+
+
+
+
+

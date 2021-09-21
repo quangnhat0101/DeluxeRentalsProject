@@ -21,12 +21,31 @@ class StaffController extends Controller
 
     public function createProcess(Request $rqst){
         $rqst->validate([
-            'txtsName' => 'required|string|max:50',
-            'txtsAdd' => 'required|string|max:255',
             'txtsPic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'txtsPhone' => 'required|min:10|numeric',
-            'txtsMail' => 'required|string|email|max:50',
-         ]);
+            'txtsName' => 'required|min:3|max:20',
+            'txtsPass' => 'required|min:6',  
+            'txtsMail' => 'required|email',  
+            'txtsDOB' => 'required|after:1980-01-01|before:2002-01-01',
+            'txtsSalary' => 'required|integer',
+            'txtsPhone' => 'required|digits_between:10,20|numeric',
+        ], [
+            'txtsPic.required' => 'Please upload staff picture',
+            'txtsName.required' => 'Please enter staff name',
+            'txtsName.max' => 'Staff name cannot more than 20 character',
+            'txtsPass.required' => 'Please enter staff password',
+            'txtsPass.min' => 'Password cannot be less than 6 character',
+            'txtsPass.max' => 'Password cannot be more than 20 character',
+            'txtsMail.required' => 'Please enter staff email',
+            'txtsMail.email' => 'Please enter an appropriate staff email',
+            'txtsDOB.required' => 'Please enter staff birthday',
+            'txtsDOB.after' => 'Staff must be younger than 41',
+            'txtsDOB.before' => 'Staff must be older than 19',
+            'txtsSalary.required' => 'Please enter staff salary',
+            'txtsSalary.integer' => 'Please enter numeric value only',
+            'txtsPhone.required' => 'Please enter staff phone number',
+            'txtsPhone.digits_between' => 'Staff phone number must be at least 10 digits',
+            'txtsPhone.numeric' => 'Please enter numeric value only',
+        ]);
         
         
         //Read data from textfield
@@ -63,12 +82,31 @@ class StaffController extends Controller
     public function updateProcess(Request $rqst, $sfid){
 
         $rqst->validate([
-            'txtsName' => 'required|string|max:50',
-            'txtsAdd' => 'required|string|max:255',
             'txtsPic' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'txtsPhone' => 'required|min:10|numeric',
-            'txtsMail' => 'required|string|email|max:50',
-         ]);
+            'txtsName' => 'required|min:3|max:20',
+            'txtsPass' => 'required|min:6',  
+            'txtsMail' => 'required|email',  
+            'txtsDOB' => 'required|after:1980-01-01|before:2002-01-01',
+            'txtsSalary' => 'required|integer',
+            'txtsPhone' => 'required|digits_between:10,20|numeric',
+        ], [
+            'txtsPic.required' => 'Please upload staff picture',
+            'txtsName.required' => 'Please enter staff name',
+            'txtsName.max' => 'Staff name cannot more than 20 character',
+            'txtsPass.required' => 'Please enter staff password',
+            'txtsPass.min' => 'Password cannot be less than 6 character',
+            'txtsPass.max' => 'Password cannot be more than 20 character',
+            'txtsMail.required' => 'Please enter staff email',
+            'txtsMail.email' => 'Please enter an appropriate staff email',
+            'txtsDOB.required' => 'Please enter staff birthday',
+            'txtsDOB.after' => 'Staff must be younger than 41',
+            'txtsDOB.before' => 'Staff must be older than 19',
+            'txtsSalary.required' => 'Please enter staff salary',
+            'txtsSalary.integer' => 'Please enter numeric value only',
+            'txtsPhone.required' => 'Please enter staff phone number',
+            'txtsPhone.digits_between' => 'Staff phone number must be at least 10 digits',
+            'txtsPhone.numeric' => 'Please enter numeric value only',
+        ]);
         //Read data from textfield
         $staff = management_staff::find($sfid);
       

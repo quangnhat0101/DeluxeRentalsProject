@@ -21,7 +21,7 @@ class RegisterController extends Controller
               'name' => 'required|string|max:50',
               'address' => 'required|string|max:255',
               'dob' => 'required|date|date_format:Y-m-d',
-              'phone' => 'required|min:10|numeric',
+              'phone' => 'required|digits_between:10,20|numeric',
               'email' => 'required|string|email|max:50|unique:users',
               'password' => 'required|string|min:8|confirmed',
               'password_confirmation' => 'required',

@@ -1,5 +1,5 @@
 @extends('layout.layout2')
-@section('title', 'Maintenance List')
+@section('title', 'Maintenance Report')
 @section('my content')
 
 <div class="container small-index text-center">
@@ -14,14 +14,14 @@
 </div>
 
 <div class="container  overflow-auto" style="margin-top: 70px; margin-bottom: 100px">
-@if(session('status'))
+            @if(session('status'))
                 <h3 style="color: red" >{{session('status')}}</h3>
             @endif
 
-<h1>List of Maintenance</h1>
-    <h3><a href="{{ url('maintenancecreate') }}">Create new Maintenance</a></h3>
+<h1 style="text-align: center; color: #e43c5c">Maintenance Report Index</h1>
+    <h3><a class="btn btn-danger" href="{{ url('maintenancecreate') }}">Create new Maintenance report</a></h3>
     <table class="table table-bordered">
-        <thread class="thead-dark">
+        <thead class="thead-dark">
             <tr>
                 <th>ID</th>
                 <th>Date</th>
@@ -30,7 +30,7 @@
                 <th colspan=2>Function</th>
 
             </tr>
-        </thread>    
+        </thead>    
         
         <tbody>
             @foreach($maintenancelist as $list)
@@ -40,10 +40,10 @@
                 <td>{{ $list -> CarPlate }}</td>
                 <td>{{ $list -> Comment }}</td>
                 <td>
-                    <a href="{{ url('maintenanceupdate/'.$list->MaintenanceID) }}">Edit</a>
+                    <a href="{{ url('maintenanceupdate/'.$list->MaintenanceID) }}" class="btn btn-dark btn-sm">Edit</a>
                 </td>
                 <td>
-                    <a href="{{ url('maintenancedelete/'.$list->MaintenanceID) }}">Delete</a>
+                    <a href="{{ url('maintenancedelete/'.$list->MaintenanceID) }}" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
             @endforeach

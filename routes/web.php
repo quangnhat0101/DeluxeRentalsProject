@@ -28,6 +28,8 @@ Route::get('/', function () {
 
     //Route for booking
     Route::get('booking','OrderController@BookCar');
+    Route::get('filtercar/{id}','OrderController@filterCar');
+    Route::get('bookacar/{id}','OrderController@BookACar');
 
     Route::get('add-to-cart/{id}','OrderController@addToCart');
     Route::get('cart', 'OrderController@cart');
@@ -36,6 +38,8 @@ Route::get('/', function () {
     Route::delete('remove-from-cart', 'OrderController@remove');
 
 
+    
+    Route::post('contactus', 'SiteController@ContactUsForm')->name('contactus.store');
 
 //----------------Car CRUD---------------------------
     //01. Index
@@ -97,18 +101,35 @@ Route::get('customerindex','CustomerController@index');
 
 
 //----------------Customer CRUD---------------------------
+
+
+//--------------------NHAT'S ROUTES---------------
+// Route::get('customerindex','CustomerController@customerindex');
+// Route::get('myprofile','CustomerController@customerprofile');
+
+
+
+//--------------------DUC'S ROUTES---------------
+
 //01.READ - http://localhost:8080/DeluxeRentalsProject/public/customerindex
 Route::get('customerindex','CustomerController@customerindex');
 Route::get('myprofile','CustomerController@customerprofile');
-//02.CREATE - http://localhost:8080/DeluxeRentalsProject/public/customercreate
-Route::get('customercreate', 'CustomerController@customercreate');
-Route::post('customercreate','CustomerController@customercreateprocess');
-//03. UPDATE - http://localhost:8080/DeluxeRentalsProject/public/customerupdate/{cid}
-Route::get('customerupdate/{CusID}','CustomerController@UpdateCustomer');
-Route::post('customerupdate/{CusID}','CustomerController@UpdateCustomerProcess');
-//04. UPDATE PASSWORD - http://localhost:8080/DeluxeRentalsProject/public/customerpasswordupdate/{cid}
-Route::get('customerpassupdate/{CusID}','CustomerController@UpdatePassword');
-Route::post('customerpassupdate/{CusID}','CustomerController@UpdatePasswordProcess');
+Route::get('mybooking','CustomerController@myBooking');
+Route::get('mycontractdetail/{id}','CustomerController@seeMyContractDetail');
+//02. UPDATE - http://localhost:8080/DeluxeRentalsProject/public/customerupdate/{id}
+Route::get('customerupdate/{id}','CustomerController@UpdateCustomer');
+Route::post('customerupdate/{id}','CustomerController@UpdateCustomerProcess');
+
+Route::get('customeredit/{id}','CustomerController@IndexEdit');
+Route::post('customeredit/{id}','CustomerController@EditProcess');
+
+//03. UPDATE PASSWORD - http://localhost:8080/DeluxeRentalsProject/public/customerpasswordupdate/{cid}
+Route::get('customerpassupdate/{id}','CustomerController@UpdatePassword');
+Route::post('customerpassupdate/{id}','CustomerController@UpdatePasswordProcess');
+
+//04. DELETE
+Route::get('customerdelete/{id}','CustomerController@CustomerDelte');
+
 
 
 
@@ -128,11 +149,11 @@ Route::get('maintenancedelete/{id}','MaintenanceController@DeleteMaintenance');
 //01.READ - http://localhost:8080/DeluxeRentalsProject/public/feedbackindex
 Route::get('feedbackindex','FeedbackController@feedbackindex');
 //02.CREATE - http://localhost:8080/DeluxeRentalsProject/public/customercreate
-Route::get('feedbackcreate', 'FeedbackController@feedbackcreate');
+Route::get('feedbackcreate/{id}', 'FeedbackController@feedbackcreate');
 Route::post('feedbackcreate', 'FeedbackController@feedbackcreateprocess');
-//03. UPDATE - http://localhost:8080/DeluxeRentalsProject/public/customerupdate/{fid}
-Route::get('feedbackupdate/{fid}','FeedbackController@Updatefeedback');
-Route::post('feedbackupdate/{fid}', 'FeedbackController@Updatefeedbackprocess');
+// //03. UPDATE - http://localhost:8080/DeluxeRentalsProject/public/customerupdate/{fid}
+// Route::get('feedbackupdate/{fid}','FeedbackController@Updatefeedback');
+// Route::post('feedbackupdate/{fid}', 'FeedbackController@Updatefeedbackprocess');
 //04. DELETE - http://localhost:8080/DeluxeRentalsProject/public/feedbackdelete/{fid}
 Route::get('feedbackdelete/{fid}', 'FeedbackController@DeleteFeedback');
 
@@ -151,8 +172,13 @@ Route::post('forget-password', 'Auth\ForgotPasswordController@postEmail');
 Route::get('reset-password/{token}', 'Auth\ResetPasswordController@getPassword');
 Route::post('reset-password', 'Auth\ResetPasswordController@updatePassword');
 
-//----------------COntract Routes---------------------------
+//----------------Contract Routes---------------------------
 
 Route::get('contractindex','ContractController@contractIndex');
+Route::get('contractstaffedit/{id}','ContractController@contractStaffEdit');
+Route::post('contractstaffedit/{id}','ContractController@contractStaffUpdate');
 Route::get('contractdelete/{id}','ContractController@contractDelete');
+Route::get('detaildelete/{id}','ContractController@detailDelete');
 Route::get('contractdetail/{id}','ContractController@seeContractDetail');
+Route::get('detailupdate/{id}','ContractController@detailUpdate');
+Route::post('detailupdate/{id}','ContractController@detailUpdateProcess');

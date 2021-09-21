@@ -17,6 +17,7 @@ class contract extends Model
         'CusID',
         'StaffID',
         'ContractStatus',
+        'FeedbackStatus',
     ];
   
 }
