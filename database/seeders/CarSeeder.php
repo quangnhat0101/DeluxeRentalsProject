@@ -19,7 +19,7 @@ class CarSeeder extends Seeder
             'CarModel' => 'Sorento',
             'CarPrice' => '30',
             'CarPlate' => '51A 36785',
-            'CarPic' => 'https://i.xeoto.com.vn/auto/kia/sorento/kia-sorento-2021-35675.png',
+            'CarPic' => 'https://cdn.jdpower.com/JDPA_2021%20Kia%20Sorento%20SX%20Prestige%20X-Line%202_5T%20Green%20Front%20Quarter%20View.jpg',
             ]);
         DB::table('cars')->insert([
             'CarBrand' => 'Kia',
@@ -61,7 +61,7 @@ class CarSeeder extends Seeder
             'CarModel' => 'Genesis',
             'CarPrice' => '50',
             'CarPlate' => '51A 11145',
-            'CarPic' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/2010_Hyundai_Genesis_Coupe_3_--_08-28-2009.jpg/800px-2010_Hyundai_Genesis_Coupe_3_--_08-28-2009.jpg',
+            'CarPic' => 'https://carsguide-res.cloudinary.com/image/upload/f_auto,fl_lossy,q_auto,t_default/v1/editorial/vhs/Hyundai-Genesis.png',
             ]);
         DB::table('cars')->insert([
             'CarBrand' => 'Mazda',

@@ -90,7 +90,7 @@ class OrderController extends Controller
                     ]
             ];
             Session::put('cart',$cart);
-            return redirect()->back()->with('status', 'Product added to cart successfully!');
+            return redirect('booking')->with('status', 'Car added to cart successfully!');
         }
         // if cart not empty then check if this product exist then gicing warning
         if(isset($cart[$id])) {
@@ -108,7 +108,7 @@ class OrderController extends Controller
             "CarPic" => $car->CarPic
         ];
         session()->put('cart', $cart);
-        return redirect()->back()->with('status', 'Product added to cart successfully!');
+        return redirect('booking')->with('status', 'Car added to cart successfully!');
     }
 
     

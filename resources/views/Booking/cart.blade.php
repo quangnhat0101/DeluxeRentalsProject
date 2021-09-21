@@ -29,8 +29,12 @@
                 <tr class="text-center">
                     <td data-th="CarBrand" >
                         <div class="row">
-                            <!-- <div class="col-sm-3 hidden-xs"><img src="{{ asset('uploads/carlist/'.$details['CarPic']) }}" width="130x" height="70px" alt="CarImage" width="100" height="100" class="img-responsive"/></div> -->
+                            <!--This is for real use-->
+                            <!-- <div class="col-4"><img src="{{ asset('uploads/carlist/'.$details['CarPic']) }}" style="max-width: 100%" alt="CarImage" ></div> -->
+                            
+                            <!--This is image for testing after seeding-->
                             <div class="col-4"><img src="{{ $details['CarPic'] }}" style="max-width: 100%" alt="CarImage" ></div>
+                            
                             <div class="col-8" style="padding-top:5%">
                                 <h4>{{ $details['CarBrand'] }} {{ $details['CarModel'] }}</h4>
                             </div>

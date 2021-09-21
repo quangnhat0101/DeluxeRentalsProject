@@ -45,9 +45,18 @@
                     <td>{{ $list -> BrandFax}}</td>
                     <td>{{ $list -> BrandPhone }}</td>
                     <td>{{ $list -> BrandMail }}</td>
+                    <!--This is image for testing after seeding-->
                     <td>
-                        <img src="{{ asset('uploads/brandlist/'.$list->BrandLogo) }}" width="70x" height="70px" alt="BrandImage">
+                        <img src="{{ $list->BrandLogo }}" width="70x" height="70px" alt="BrandImage">
                     </td>
+
+                    <!--This is for real use-->
+                    <!-- <td>
+                        <img src="{{ asset('uploads/brandlist/'.$list->BrandLogo) }}" width="70x" height="70px" alt="BrandImage">
+                    </td> -->
+
+                    
+
                     <td>
                         <a href="{{ url('brandupdate/'.$list->BrandID) }}" class="btn btn-dark btn-sm">Edit</a>
                     </td>

@@ -44,7 +44,7 @@ class CustomerController extends Controller
         $customerlist->phone = $request -> input('txtcPhone');
         $customerlist->update();
         
-        return redirect()->back()->with('success','Profile updated successfully'); 
+        return redirect('myprofile')->with('status','Profile updated successfully'); 
     }
 
     //INDEX EDIT

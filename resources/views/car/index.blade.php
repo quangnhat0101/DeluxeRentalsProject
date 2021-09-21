@@ -43,6 +43,7 @@
                     <td>{{ $list -> CarPlate }}</td>
                     <td>$ {{ $list -> CarPrice }}</td>
                     <!--This is for real use-->
+
                     <!-- <td>
                         <img src="{{ asset('uploads/carlist/'.$list->CarPic) }}" width="130x" height="70px" alt="CarImage">
                     </td> --> 
@@ -51,6 +52,8 @@
                     <td>
                         <img src="{{ $list->CarPic }}" width="130x" height="70px">
                     </td>
+
+                    
                     <td>
                         <a href="{{ url('carupdate/'.$list->CarID) }}" class="btn btn-dark btn-sm">Edit</a>
                     </td>
