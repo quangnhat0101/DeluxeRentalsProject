@@ -13,7 +13,7 @@ class contract_detail extends Model
     protected $fillable = [
         'ContractDetailID',
         'ContractNo',
-        'DriverID',
+        'DriverName',
         'CarPlate',
         'Departure',
         'Arrival',

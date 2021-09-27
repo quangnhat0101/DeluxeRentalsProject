@@ -23,6 +23,7 @@
                         @endif     
    
                         <div class="card-body">
+                        <p class="text-danger font-weight-bold">*All fields are required.</p>
                             <!-- Form start -->
                             <form method="post" action="{{ url('staffupdate/'.$staff->StaffID) }}" enctype="multipart/form-data">
                             @csrf

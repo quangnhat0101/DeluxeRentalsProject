@@ -29,12 +29,12 @@
                 <tr class="text-center">
                     <td data-th="CarBrand" >
                         <div class="row">
-                            <!--This is for real use-->
-                            <!-- <div class="col-4"><img src="{{ asset('uploads/carlist/'.$details['CarPic']) }}" style="max-width: 100%" alt="CarImage" ></div> -->
-                            
-                            <!--This is image for testing after seeding-->
+                            <?php $destination = 'uploads/carlist/'.$details['CarPic'] ?>
+                            @if(File::exists($destination))
+                            <div class="col-4"><img src="{{ asset('uploads/carlist/'.$details['CarPic']) }}" style="max-width: 100%" alt="CarImage" ></div>
+                            @else
                             <div class="col-4"><img src="{{ $details['CarPic'] }}" style="max-width: 100%" alt="CarImage" ></div>
-                            
+                            @endif
                             <div class="col-8" style="padding-top:5%">
                                 <h4>{{ $details['CarBrand'] }} {{ $details['CarModel'] }}</h4>
                             </div>

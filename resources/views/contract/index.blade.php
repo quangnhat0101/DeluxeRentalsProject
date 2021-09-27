@@ -22,7 +22,7 @@
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr style="text-align: center">
-                    <th>Contract ID</th>
+                    <th>No.</th>
                     <th>Contract Number</th>
                     <th>Contract Date</th>
                     <th>Customer ID</th>
@@ -34,9 +34,10 @@
             </thead>    
             
             <tbody>
+                <?php $count=1?>
                 @foreach($contractlist as $list)
                 <tr>
-                    <td>CON00{{ $list -> ContractID }}</td>
+                    <td>{{ $count }}</td>
                     <td>{{ $list -> ContractNo }}</td>
                     <td>{{ $list -> ContractDate }}</td>
                     <td>CUS00{{ $list -> CusID }}</td>
@@ -58,6 +59,7 @@
                         onclick = "return confirm('Are you sure to delete data of contract {{$list->ContractNo}}? ')">Delete</a>
                     </td>
                 </tr>
+                <?php $count++?>
                 @endforeach
             </tbody>
             

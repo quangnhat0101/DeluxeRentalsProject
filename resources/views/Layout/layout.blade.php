@@ -59,8 +59,13 @@
           @guest
           @else
           <li><a class="nav-link" href="{{ url('booking') }}" >Booking</a></li>
+          @if( Auth::user()->name == "admin" )
           <li><a class="nav-link" href="{{ url('manage') }}" >Manage</a></li>
+          @endif
           @endguest
+
+
+          
           <li><a href="{{ url('contact') }}">Contact</a></li>
           @guest
           <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-down"></i></a>
@@ -71,7 +76,7 @@
           </li>
 
           @else
-          <li class="dropdown"><a href="#"><span>User Profile</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><span> Welcome <span style="color: aquamarine"> {{Auth::user()->name}}</span> </span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{{ url('myprofile') }}">My Profile</a></li>
               <li><a href="{{ url('logout') }}">Logout</a></li>
@@ -84,19 +89,47 @@
                   <button type="button" class="btn btn-danger" data-toggle="dropdown">
                       <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-dark">{{ count((array) session('cart')) }}</span>
                   </button>
-                  <div class="dropdown-menu">
-                      <div class="row total-header-section">
-                          <div class="col-lg-5 col-sm-5 col-5">
-                              <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
-                          </div>
-                          <?php $total = 0 ?>
-                          @foreach((array) session('cart') as $id => $details)
-                              <?php $total += $details['CarPrice'] * $details['quantity'] ?>
-                          @endforeach
-                          <div class="col-lg-6 col-sm-6 col-6 total-section">
-                              <p>Total: <span class="text-info">$ {{ $total }}</span></p>
-                          </div>
-                      </div>
+                    <div class="dropdown-menu">
+                        <div class="row total-header-section">
+                            <div class="col-lg-5 col-sm-5 col-5">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                            </div>
+                            <?php $total = 0 ?>
+                            @foreach((array) session('cart') as $id => $details)
+                                <?php $total += $details['CarPrice'] * $details['quantity'] ?>
+                            @endforeach
+                            <div class="col-lg-6 col-sm-6 col-6 total-section">
+                                <p>Total: <span class="text-info">$ {{ $total }}</span></p>
+                            </div>
+                        </div>
+
+
+                    <div style="padding-top: 15px">
+                    @if(session('cart'))
+                        @foreach(session('cart') as $id => $details)
+                            <div class="row cart-detail">
+                                <div class="col-lg-4 col-sm-4 col-4">
+                                <?php $destination = 'uploads/carlist/'.$details['CarPic'] ?>
+                                @if(File::exists($destination))
+                                    <img src="{{ asset('uploads/carlist/'.$details['CarPic']) }}" style="width: 100%" />
+                                @else
+                                    <img src="{{ $details['CarPic'] }}" style="width: 100%" />
+                                @endif
+
+                                </div>
+                                <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
+                                    <span> {{ $details['CarBrand'] }} {{ $details['CarModel'] }} </span> <br>
+                                     <span class="count">{{ $details['quantity'] }} days - </span>
+                                     <span> ${{ $details['CarPrice']*$details['quantity'] }}</span>
+                                </div>
+                            </div>
+                            <br>
+                        @endforeach
+                      @endif
+                    </div>
+
+
+
 
                       <div class="row">
 

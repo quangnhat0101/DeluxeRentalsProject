@@ -16,6 +16,7 @@
                             <h3 class="card-title">NEW DRIVER INFORMATION</h3>
                         </div>
                         <div class="card-body">
+                        <p class="text-danger font-weight-bold">*All fields are required.</p>
                             <form method="POST" action="{{ url('drivercreate') }}" enctype="multipart/form-data"> 
                                 @csrf
                                 <div class="form-group">

@@ -97,6 +97,10 @@ class OrderController extends Controller
             return redirect()->back()->with('status', 'You already book this car!');
         }
         // if item not exist in cart then add to cart with quantity = 1
+
+        if( count((array) session('cart')) >= 5){
+            return redirect()->back()->with('status', 'You can only book miximum of 5 cars for 1 booking!');
+        }
         $cart[$id] = [
             "CarBrand" => $car->CarBrand,
             "CarModel" => $car->CarModel,

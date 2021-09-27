@@ -132,4 +132,10 @@ class DriverController extends Controller
         $driver->delete();
         return redirect('driverindex')->with('status','Driver Deleted Successfully');
     }
+
+    //VIEW DETAIL
+    public function viewdetail($id){
+        $driver= driver::find($id);
+        return view('driver.Detail', compact('driver'));
+    }
 }

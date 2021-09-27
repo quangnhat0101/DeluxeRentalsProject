@@ -26,12 +26,22 @@
                                     <input type="text" class="form-control" value="{{ $detail->ContractNo }}" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label>DriverID</label>
-                                    <input type="text" class="form-control" name="txtDriverID" value="{{ $detail->DriverID }}">
+                                    <label>Driver Name</label>
+                                    <select class="form-select" name="txtDriverName">
+                                        <option selected>{{ $detail->DriverName }}</option>
+                                        @foreach($driverlist as $dlist)
+                                        <option value="{{ $dlist->DriverName}}">{{$dlist->DriverName}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Car Plate</label>
-                                    <input type="text" class="form-control" name="txtCarPlate" value="{{ $detail->CarPlate }}">
+                                    <select class="form-select" name="txtCarPlate">
+                                        <option selected>{{ $detail->CarPlate }}</option>
+                                        @foreach($carlist as $clist)
+                                        <option value="{{ $clist->CarPlate}}">{{ $clist->CarPlate}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Departure</label>
@@ -47,7 +57,7 @@
                                 </div>
 
                                 <button type="submit" class="btn btn-danger">Update</button>
-                                <a class ="btn btn-dark" href="{{ url('contractdetail/'.$detail->ContractNo) }}">Return to index</a>
+                                <a class ="btn btn-dark" href="{{ url('contractdetail/'.$detail->ContractNo) }}">Return to Contract details</a>
                             </form>
                         </div>     
 

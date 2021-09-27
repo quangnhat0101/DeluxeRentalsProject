@@ -60,6 +60,8 @@ Route::get('/', function () {
 //----------------Staff CRUD---------------------------
     //01.READ 
     Route::get('staffindex', 'StaffController@index');
+    //01.5 VIEW DETAIL 
+    Route::get('staffview/{id}', 'StaffController@viewdetail');
     //02.CREAT 
     Route::get('staffcreate', 'StaffController@create');
     Route::post('staffcreate', 'StaffController@createProcess');
@@ -75,6 +77,8 @@ Route::get('/', function () {
 //----------------Driver CRUD---------------------------
         //01.READ 
         Route::get('driverindex', 'DriverController@index');
+        //01.5 VIEW DETAIL 
+        Route::get('driverview/{id}', 'DriverController@viewdetail');
         //02.CREAT 
         Route::get('drivercreate', 'DriverController@create');
         Route::post('drivercreate', 'DriverController@createProcess');

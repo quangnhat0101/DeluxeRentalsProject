@@ -58,7 +58,7 @@
             <table class="table table-bordered">
                 <thead class="thead-dark">
                     <tr style="text-align: center">
-                        <th>Contract ID</th>
+                        <!--<th>Contract ID</th>-->
                         <th>Contract Number</th>
                         <th>Contract Date</th>
                         <th>Contract Status</th>
@@ -69,7 +69,7 @@
                 <tbody>
                     @foreach($cuscontract as $list)
                     <tr>
-                        <td>CON00{{ $list -> ContractID }}</td>
+                        <!-- <td>CON00{{ $list -> ContractID }}</td> -->
                         <td>{{ $list -> ContractNo }}</td>
                         <td>{{ $list -> ContractDate }}</td>
                         @if($list -> ContractStatus == 1)

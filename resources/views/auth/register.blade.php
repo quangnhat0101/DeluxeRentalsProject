@@ -8,6 +8,9 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
+                    <p class="text-danger font-weight-bold">*All fields are required.</p>
+                    
+                    <br>
                     <form method="POST" action="{{ url('register') }}">
                         @csrf
 

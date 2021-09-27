@@ -25,7 +25,7 @@
                         <th>Driver Punctuality</th>
                         <th>Reasonable Price</th>
                         <th>More Comments</th>
-                        <th>Function</th>
+                        <th>Average Evaluation</th>
 
                     </tr>
                 </thead>    
@@ -39,10 +39,8 @@
                         <td>{{ $list -> Punctuality }}</td>
                         <td>{{ $list -> ReasonalPrice }}</td>
                         <td>{{ $list -> Comment }}</td>
-                        
-                        <td>
-                            <a href="{{ url('feedbackdelete/'.$list->FeedbackID) }}" class="btn btn-danger btn-sm" onclick = "return confirm('Are you sure to delete car {{$list->CarPlate}}? ')">Delete</a>
-                        </td>
+                        <?php $average = round(collect([$list->DriverAttitude, $list->Punctuality, $list->ReasonalPrice])->avg(),2) ?>
+                        <td>{{ $average }}</td>
                     </tr>
                     @endforeach
                 </tbody>

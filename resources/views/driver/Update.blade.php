@@ -17,6 +17,7 @@
                             
 
                         <div class="card-body">
+                        <p class="text-danger font-weight-bold">*All fields are required.</p>
                             
                             <form method="POST" action="{{ url('driverupdate/'.$driver->DriverID) }}" enctype="multipart/form-data"> 
                                 @csrf

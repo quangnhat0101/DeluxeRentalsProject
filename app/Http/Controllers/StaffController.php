@@ -144,5 +144,11 @@ class StaffController extends Controller
         return redirect() -> action('staffindex');
     }
 
+
+    //VIEW DETAIL
+    public function viewdetail($id){
+        $staff = management_staff::find($id);
+        return view('staff.Detail', compact('staff'));
+    }
     
 }

@@ -16,7 +16,7 @@ class CreateContractDetailsTable extends Migration
         Schema::create('contract_details', function (Blueprint $table) {
             $table->bigIncrements('ContractDetailID');
             $table->string('ContractNo',30);
-            $table->string('DriverID',10)->nullable();
+            $table->string('DriverName',50)->nullable();
             $table->string('CarPlate',10);
             $table->date('Departure')->nullable();
             $table->date('Arrival')->nullable();

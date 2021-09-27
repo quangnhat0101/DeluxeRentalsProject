@@ -13,18 +13,6 @@
           <h3>Book your <span>Favorite {{$car}}</span></h3>
         </div>
 
-        <!-- <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul class="filtercar">
-              <li><a href="{{ url('booking') }}">All</a></li>
-              @foreach($brandlist as $blist)
-              <li><a href="{{ url('filtercar/'.$blist->BrandName) }}">{{$blist->BrandName}}</a></li>
-              @endforeach
-
-            </ul>
-          </div>
-        </div> -->
-
         <div class="row">
           <div class="col-lg-12 d-flex justify-content-center">
             <div class="filtercar">
@@ -40,7 +28,14 @@
         <div class="row portfolio-container">
             @foreach($carlist as $clist)
             <div class="col-lg-4 col-md-6 portfolio-item">
+
+            <?php $destination = 'uploads/carlist/'.$clist->CarPic ?>
+            @if(File::exists($destination))
+                <img src="{{ asset('uploads/carlist/'.$clist->CarPic) }}" class="img-fluid" alt="">
+            @else
                 <img src=" {{ $clist->CarPic }} " class="img-fluid" alt="">
+            @endif
+
                 <div class="portfolio-info">
                 <h4>{{ $clist-> CarBrand}} {{ $clist-> CarModel}}</h4>
                 <p>{{ $clist-> CarPlate}}</p>

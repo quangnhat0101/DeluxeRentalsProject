@@ -10,9 +10,13 @@
         <div class="col-6">
             <!--This is image for testing after seeding-->
             @foreach($carlist as $list)
-                <img src="{{ $list -> CarPic }}" alt="{{ $list->CarBrand}} {{ $list->CarModel}}" style="max-width: 100%">
+            <?php $destination = 'uploads/carlist/'.$list->CarPic ?>
+            @if(File::exists($destination))
+                <img src="{{ asset('uploads/carlist/'.$list->CarPic) }}" alt="{{ $list->CarBrand}} {{ $list->CarModel}}" style="max-width: 100%">
+            @else
+                <img src="{{ $list->CarPic }}" alt="{{ $list->CarBrand}} {{ $list->CarModel}}" style="max-width: 100%">
+            @endif
             @endforeach
-
             <!--This is for real use-->
             <!-- @foreach($carlist as $list)
                 <img src="{{ asset('uploads/brandlist/'.$list->CarBrand) }}" alt="{{ $list->CarBrand}} {{ $list->CarModel}}" style="max-width: 100%">

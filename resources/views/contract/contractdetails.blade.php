@@ -46,8 +46,8 @@
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr style="text-align: center">
-                    <th>ID</th>
-                    <th>Driver ID</th>
+                    <th>No.</th>
+                    <th>Driver Name</th>
                     <th>Car Plate </th>
                     <th>Departure</th>
                     <th>Arrival</th>
@@ -59,12 +59,12 @@
             
             <tbody>
             <?php $total = 0 ?>
-
+            <?php $count = 1 ?>
             @foreach($detail as $list)
             <?php $total += $list->SubTotal?>
                 <tr>
-                    <td>CD00{{ $list -> ContractDetailID }}</td>
-                    <td>{{ $list -> DriverID }}</td>
+                    <td>{{ $count }}</td>
+                    <td>{{ $list -> DriverName }}</td>
                     <td>{{ $list -> CarPlate }}</td>
                     <td>{{ $list -> Departure }}</td>
                     <td>{{ $list -> Arrival }}</td>
@@ -77,9 +77,10 @@
                         onclick = "return confirm('Are you sure to delete data of contract {{$list->ContractNo}}? ')">Delete</a>
                     </td>
                 </tr>
+                <?php $count++ ?>
                 @endforeach
                 <tr>
-                    <td></td>
+ 
                     <td></td>
                     <td></td>
                     <td></td>
@@ -93,6 +94,7 @@
             </tbody>
             
         </table>
+        <a href="{{ url('contractindex') }}" class="btn btn-warning">Return to Contract Index</a>
 </div>
 
 <!-- Add/Edit Staff Modal -->

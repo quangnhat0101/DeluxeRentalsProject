@@ -18,8 +18,8 @@
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr style="text-align: center">
-                    <th>ID</th>
-                    <th>Driver ID</th>
+                    <th>No.</th>
+                    <th>Driver Name</th>
                     <th>Car Plate </th>
                     <th>Departure</th>
                     <th>Arrival</th>
@@ -29,17 +29,19 @@
             
             <tbody>
             <?php $total = 0 ?>
+            <?php $count = 1 ?>
 
             @foreach($detail as $list)
             <?php $total += $list->SubTotal?>
                 <tr>
-                    <td>CD00{{ $list -> ContractDetailID }}</td>
-                    <td>{{ $list -> DriverID }}</td>
+                    <td>{{ $count }}</td>
+                    <td>{{ $list -> DriverName }}</td>
                     <td>{{ $list -> CarPlate }}</td>
                     <td>{{ $list -> Departure }}</td>
                     <td>{{ $list -> Arrival }}</td>
                     <td>{{ $list -> SubTotal }}</td>
                 </tr>
+                <?php $count++ ?>
                 @endforeach
                 <tr>
                     <td></td>

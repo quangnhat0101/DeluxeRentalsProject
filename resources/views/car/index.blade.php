@@ -42,16 +42,20 @@
                     <td>{{ $list -> CarModel }}</td>
                     <td>{{ $list -> CarPlate }}</td>
                     <td>$ {{ $list -> CarPrice }}</td>
-                    <!--This is for real use-->
-
-                    <!-- <td>
-                        <img src="{{ asset('uploads/carlist/'.$list->CarPic) }}" width="130x" height="70px" alt="CarImage">
-                    </td> --> 
-
-                    <!--This is image for testing after seeding-->
+                   
+                   <?php $destination = 'uploads/carlist/'.$list->CarPic ?>
+                    @if(File::exists($destination))
                     <td>
-                        <img src="{{ $list->CarPic }}" width="130x" height="70px">
-                    </td>
+                        <img src="{{ asset('uploads/carlist/'.$list->CarPic) }}" width="130x" height="70px" alt="CarImage">
+                    </td> 
+
+                    @else
+                    <td>
+                        <img src="{{ $list->CarPic }}" width="130x" height="70px" alt="CarImage">
+                    </td> 
+                    @endif
+                    
+
 
                     
                     <td>

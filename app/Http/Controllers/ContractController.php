@@ -7,6 +7,8 @@ use Auth;
 use App\Models\contract;
 use App\Models\contract_detail;
 use App\Models\User;
+Use App\Models\driver;
+Use App\Models\car;
 
 class ContractController extends Controller
 {
@@ -42,12 +44,14 @@ class ContractController extends Controller
 
     public function detailUpdate($id){
         $detail = contract_detail::find($id);
-        return view('contract.detailupdate',compact('detail'));
+        $driverlist = driver::all();
+        $carlist = car::all();
+        return view('contract.detailupdate',array('detail' => $detail, 'driverlist' => $driverlist, 'carlist' => $carlist));
     }
 
     public function detailUpdateProcess(Request $request, $id){
         $detail = contract_detail::find($id);
-        $detail->DriverID = $request->input('txtDriverID');
+        $detail->DriverName = $request->input('txtDriverName');
         $detail->CarPlate = $request->input('txtCarPlate');
         $detail->Departure = $request->input('txtDeparture');
         $detail->Arrival = $request->input('txtArrival');
