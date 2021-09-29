@@ -9,6 +9,7 @@ use App\Models\contract_detail;
 use App\Models\User;
 Use App\Models\driver;
 Use App\Models\car;
+Use App\Models\management_staff;
 
 class ContractController extends Controller
 {
@@ -44,7 +45,7 @@ class ContractController extends Controller
 
     public function detailUpdate($id){
         $detail = contract_detail::find($id);
-        $driverlist = driver::all();
+        $driverlist = driver::where('DriverStatus',1)->get();
         $carlist = car::all();
         return view('contract.detailupdate',array('detail' => $detail, 'driverlist' => $driverlist, 'carlist' => $carlist));
     }
@@ -71,7 +72,8 @@ class ContractController extends Controller
 
     public function contractStaffEdit($id){
         $contract = contract::find($id);
-        return view('contract.contractstaffedit',compact('contract'));
+        $stafflist = management_staff::where('CurrentStaff',1)->get();
+        return view('contract.contractstaffedit',array('contract' => $contract, 'stafflist' => $stafflist));
     }
 
     public function contractStaffUpdate(Request $request, $id){

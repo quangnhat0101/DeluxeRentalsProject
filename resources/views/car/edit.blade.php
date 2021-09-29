@@ -19,7 +19,14 @@
                             @csrf
                                 <div class="form-group">
                                     <label>Car Brand</label>
-                                    <input type="text" class="form-control" name="txtBrand" value="{{ $carlist->CarBrand }}">
+
+                                    <select class="form-select" name="txtBrand">     
+                                        <option selected value="{{ $carlist->CarBrand }}">{{ $carlist->CarBrand }}</option>                                   
+                                        @foreach($brandlist as $blist)
+                                        <option value="{{ $blist->BrandName }}">{{ $blist->BrandName }}</option>
+                                        @endforeach
+                                    </select>
+
                                 </div>
                                 <div class="form-group">
                                     <label>Car Model</label>
@@ -36,8 +43,12 @@
                                 <div class="form-group">
                                     <label>Car Image</label>
                                     <input type="file" name="CarPic">
+                                    <?php $destination = 'uploads/carlist/'.$carlist->CarPic ?>
+                                    @if(File::exists($destination))
                                     <img src="{{ asset('uploads/carlist/'.$carlist->CarPic) }}" width="100px" height="70px" alt="CarImage">
-                                    
+                                    @else
+                                    <img src="{{ $carlist->CarPic }}" width="100px" height="70px" alt="CarImage">
+                                    @endif
                                 </div>
                                 <button type="submit" class="btn btn-danger">Update</button>
                                 <a class ="btn btn-dark" href="{{ url('carindex') }}">Return to index</a>

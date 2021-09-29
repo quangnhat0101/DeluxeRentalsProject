@@ -38,7 +38,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Brand Logo</label>
+
+                                    <?php $destination = 'uploads/brandlist/'.$brandlist->BrandLogo ?>
+                                    @if(File::exists($destination))
                                     <img src="{{ asset('uploads/brandlist/'.$brandlist->BrandLogo) }}" width="70px" height="70px" alt="BrandImage">
+                                    @else
+                                    <img src="{{ $brandlist->BrandLogo }}" width="70px" height="70px" alt="BrandImage">
+                                    @endif
                                     <input type="file" class="form-control" name="logoPic">
                                 </div>
 

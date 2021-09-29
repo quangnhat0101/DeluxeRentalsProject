@@ -48,7 +48,14 @@
                             @csrf
                                 <div class="form-group">
                                     <label>STAFF ID</label>
-                                    <input type="text" class="form-control" value="{{ $contract->StaffID }}" name="txtStaffID" required>
+                                   
+
+                                    <select class="form-select" name="txtStaffID">     
+                                        <option selected value="{{ $contract->StaffID }}">STF00{{ $contract->StaffID }}</option>                                   
+                                        @foreach($stafflist as $slist)
+                                        <option value="{{ $slist->StaffID }}">STF00{{ $slist->StaffID }} - {{$slist->StaffName}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <button type="submit" class="btn btn-danger">Update</button>

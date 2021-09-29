@@ -17,8 +17,8 @@ class CreateBrandsTable extends Migration
             $table->bigIncrements('BrandID');
             $table->string('BrandName',20);
             $table->string('BrandAdd',255);
-            $table->integer('BrandFax');
-            $table->integer('BrandPhone');
+            $table->string('BrandFax',20);
+            $table->string('BrandPhone',20);
             $table->string('BrandMail',50);
             $table->string('BrandLogo',255);
             $table->timestamps();

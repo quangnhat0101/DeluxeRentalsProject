@@ -77,13 +77,13 @@
                                     
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" name="txtdStatus" value="1">
-                                        <label class="form-check-label" for="exampleCheck1">Driver Status</label>                                    
+                                        <label class="form-check-label" for="exampleCheck1">Active Driver</label>                                    
                                     </div>
     
-                                    <div class="form-check">
+                                    <!-- <div class="form-check">
                                         <input type="checkbox" class="form-check-input" name="txtdCurent" value="1">
                                         <label class="form-check-label" for="exampleCheck1">Driver Current</label>                                    
-                                    </div>
+                                    </div> -->
     
                                     <br>
                                     <button type="submit" class="btn btn-danger">Submit</button>

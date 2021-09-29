@@ -20,7 +20,7 @@
                                 <table class="table table-striped">
                                     <tr>
                                         <th scope="row">ID:</th>
-                                        <td>Staff00{{ $staff->StaffID }}</td>
+                                        <td>STF00{{ $staff->StaffID }}</td>
                                     </tr>
                 
                                     <tr>

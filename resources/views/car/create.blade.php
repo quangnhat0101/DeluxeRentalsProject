@@ -17,12 +17,17 @@
                         <form method="post" action="{{ url('carcreate') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label>Car Brand</label>
-                                <input type="text" class="form-control" name="txtBrand" placeholder="Enter car brand">
+                                <label>Car Brand</label>                                
+
+                                <select class="form-select" name="txtBrand">
+                                        @foreach($brandlist as $blist)
+                                        <option value="{{ $blist->BrandName }}">{{ $blist->BrandName }}</option>
+                                        @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Car Model</label>
-                                <input type="text" class="form-control" name="txtModel" placeholder="Enter car type">
+                                <input type="text" class="form-control" name="txtModel" placeholder="Enter car model">
                             </div>
                             <div class="form-group">
                                 <label>Car Plate</label>

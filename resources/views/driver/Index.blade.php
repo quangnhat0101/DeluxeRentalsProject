@@ -32,7 +32,7 @@
         <tbody>
             @foreach($rs as $data)
             <tr>
-                <td>Driver00{{ $data->DriverID }}</td>
+                <td>DRV00{{ $data->DriverID }}</td>
                 <td>{{ $data->DriverName }}</td>
                 <td>{{ $data->DriverPhone }}</td>
                 <td>{{ $data->DriverAdd }}</td>

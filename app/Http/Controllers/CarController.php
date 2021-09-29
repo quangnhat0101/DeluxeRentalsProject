@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\car;
+use App\Models\brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -14,7 +15,8 @@ class CarController extends Controller
     }
 
     public function CreateCar(){
-        return view ('car.create');
+        $brandlist = brand::all();
+        return view ('car.create',compact('brandlist'));
     }
 
     public function StoreCar(Request $request){
@@ -33,13 +35,14 @@ class CarController extends Controller
         }
         $car->save();
         
-        return redirect()->back()->with('status','Car added successfully');
+        return redirect('carindex')->with('status','Car added successfully');
     }
 
 
     public function EditCar($id){
         $carlist = car::find($id);
-        return view('car.edit',compact('carlist'));
+        $brandlist = brand::all();
+        return view('car.edit',array('carlist' => $carlist, 'brandlist' => $brandlist));
         
     }
 
@@ -62,7 +65,7 @@ class CarController extends Controller
         }
         $carlist->update();
         
-        return redirect()->back()->with('status','Car updated successfully');
+        return redirect('carindex')->with('status','Car updated successfully');
         
     }
 
